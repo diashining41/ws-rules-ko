@@ -133,7 +133,7 @@ const home = `<h1>바이스슈발츠 룰 한글화</h1>
 </tbody></table>
 <p>왼쪽 메뉴에서 문서를 선택하세요. 상단 검색으로 메뉴를 필터할 수 있습니다.</p>
 <hr>
-<p style="color:var(--muted);font-size:.92em"><strong>출처</strong> — 원문 룰/Q&amp;A 페이지: <a href="https://ws-tcg.com/rules/" target="_blank" rel="noopener">https://ws-tcg.com/rules/</a><br>종합 룰 원문 PDF (ver.1.111): <a href="https://ws-tcg.com/wordpress/wp-content/uploads/2026/05/19125324/WS_rule_1.111.pdf" target="_blank" rel="noopener">WS_rule_1.111.pdf</a></p>`;
+<p style="color:var(--muted);font-size:.92em"><strong>출처</strong> — 원문 룰/Q&amp;A 페이지: <a href="https://ws-tcg.com/rules/" target="_blank" rel="noopener">https://ws-tcg.com/rules/</a></p>`;
 
 // 사이드바 그룹
 const groups = [];

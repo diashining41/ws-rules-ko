@@ -308,8 +308,8 @@
 | NSO/YUUKA-P02 | Weiß＆Schwarz 니시오 유카 |
 | WS/WSPR-P18 / WS/WSPR-P18S | Happy 17th Anniversary!![화원] |
 | WS/WSPR-P20a / WS/WSPR-P20b / WS/WSPR-P20c / WS/WSPR-P20d | WORLD GRAND PRIX 2025 |
-| WS/WPR-P09 / WS/WPR-P09b | 렛츠! 바이스슈바르츠!! 와타세 유즈키 |
-| WS/WPR-P10 / WS/WPR-P10b | 렛츠! 바이스슈바르츠!! 타테이시 린 |
+| WS/WPR-P09 / WS/WPR-P09b | 레츠! 바이스슈발츠!! 와타세 유즈키 |
+| WS/WPR-P10 / WS/WPR-P10b | 레츠! 바이스슈발츠!! 타테이시 린 |
 | WS/SPR-P07 / WS/SPR-P07b | 레츠! 바이스슈발츠!! 니시오 유카 |
 | WS/SPR-P08 / WS/SPR-P08b | 레츠! 바이스슈발츠!! 후카가와 루카 |
 | WS/SPR-P09 / WS/SPR-P09b | 레츠! 바이스슈발츠!! 치하루 |
@@ -869,7 +869,7 @@
 | Pyon-Pyon Music 코코아＆치노 | GU/W57-P09 / GU/W94-082 / GU/W94-082S |
 | 마키 카오루 | MR/W59-093 |
 | “달콤한 선물” 오하라 마리 | LSS/W69-091 / LSS/W69-091A |
-| 후배로서의 자각 오사카 시즈쿠 | LNJ/W85-030 |
+| 후배로서의 자각 사쿠라사카 시즈쿠 | LNJ/W85-030 |
 | 고고 쵸로곤즈! 칸나 | KMD/W96-008 / KMD/W96-008MDR |
 | 고고 쵸로곤즈! 이루루 | KMD/W96-057 / KMD/W96-057MDR |
 | “공전의 붐 도래” 키리가야 토우코 | BD/W95-001 / BD/W95-001SSP |
