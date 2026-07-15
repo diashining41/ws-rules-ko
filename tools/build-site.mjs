@@ -35,7 +35,7 @@ const DOCS = [
 // ── 최소 마크다운 → HTML 변환기 (이 리포의 마크다운 구성에 특화) ──
 const inline = (s) =>
   s.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener">🖼 $1</a>')
-   .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>')
+   .replace(/\[([^\]]+)\]\((https?:\/\/[^)]+|#[^)]*|mailto:[^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>')
    .replace(/(^|[^"(>])\b(https?:\/\/[^\s<)]+)/g, '$1<a href="$2" target="_blank" rel="noopener">$2</a>')
    .replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>")
    .replace(/`([^`]+)`/g, "<code>$1</code>");
@@ -121,7 +121,7 @@ const sections = DOCS.map((d) => {
 
 // 홈(소개) 섹션
 const home = `<h1>바이스슈발츠 룰 한글화</h1>
-<p><a href="https://ws-tcg.com/rules/" target="_blank" rel="noopener">ws-tcg.com/rules</a> 의 일본판 자료(종합 룰·에라타·덱 구축 규칙·Q&A·플로어 룰·페널티)를 <strong>일본판 구성 그대로</strong> 한국어로 옮긴 팬 번역입니다. 게임 용어는 카드 한글화 프로젝트 <strong>ws_auto</strong>와 통일했습니다.</p>
+<p><a href="https://ws-tcg.com/rules/" target="_blank" rel="noopener">ws-tcg.com/rules</a> 의 일본판 자료(종합 룰·에라타·덱 구축 규칙·Q&A·플로어 룰·페널티)를 <strong>일본판 구성 그대로</strong> 한국어로 옮긴 팬 번역입니다.</p>
 <blockquote><strong>면책</strong> · 팬 제작 <strong>비공식·비영리</strong> 참고 자료입니다. 룰·데이터 출처 ⓒ BushiRoad / <a href="https://ws-tcg.com/" target="_blank" rel="noopener">ws-tcg.com</a>. BushiRoad와 제휴·후원 관계가 없습니다.</blockquote>
 <table><thead><tr><th>자료</th><th>내용</th></tr></thead><tbody>
 <tr><td>종합 룰(룰북)</td><td>ver.1.111 · 11장 (660섹션)</td></tr>
@@ -131,7 +131,9 @@ const home = `<h1>바이스슈발츠 룰 한글화</h1>
 <tr><td>플로어 룰</td><td>기본 + 응용(10部)</td></tr>
 <tr><td>페널티 이력</td><td>22건</td></tr>
 </tbody></table>
-<p>왼쪽 메뉴에서 문서를 선택하세요. 상단 검색으로 메뉴를 필터할 수 있습니다.</p>`;
+<p>왼쪽 메뉴에서 문서를 선택하세요. 상단 검색으로 메뉴를 필터할 수 있습니다.</p>
+<hr>
+<p style="color:var(--muted);font-size:.92em"><strong>출처</strong> — 원문 룰/Q&amp;A 페이지: <a href="https://ws-tcg.com/rules/" target="_blank" rel="noopener">https://ws-tcg.com/rules/</a><br>종합 룰 원문 PDF (ver.1.111): <a href="https://ws-tcg.com/wordpress/wp-content/uploads/2026/05/19125324/WS_rule_1.111.pdf" target="_blank" rel="noopener">WS_rule_1.111.pdf</a></p>`;
 
 // 사이드바 그룹
 const groups = [];
