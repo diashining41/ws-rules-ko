@@ -1,0 +1,6 @@
+# 부시로드 원본 자료(PDF·HTML·추출 텍스트) — 공개 재배포 방지
+sources/
+
+# 빌드 부산물
+node_modules/
+site/
