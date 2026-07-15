@@ -4,3 +4,6 @@ sources/
 # 빌드 부산물
 node_modules/
 site/
+
+# 에이전트 스크래치 파일
+scratch_*
