@@ -185,6 +185,10 @@ code{background:var(--codebg);padding:.1em .35em;border-radius:5px;font-size:.9e
 figure{margin:1.4em 0;text-align:center}
 figure img{max-width:100%;height:auto;border:1px solid var(--line);border-radius:8px;background:#fff}
 figcaption{font-size:.85em;color:var(--muted);margin-top:.6em}
+.revised{color:#d32f2f;font-weight:500}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]) .revised{color:#ff8a80}}
+:root[data-theme=dark] .revised{color:#ff8a80}
+:root[data-theme=light] .revised{color:#d32f2f}
 hr{border:0;border-top:1px solid var(--line);margin:2em 0}
 details{margin:.5em 0;border:1px solid var(--line);border-radius:8px;padding:.4em .8em}
 summary{cursor:pointer;font-weight:600}

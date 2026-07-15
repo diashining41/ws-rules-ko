@@ -36,6 +36,10 @@ code{background:var(--codebg);padding:.1em .35em;border-radius:5px;font-size:.9e
 figure{margin:1.4em 0;text-align:center}
 figure img{max-width:100%;height:auto;border:1px solid var(--line);border-radius:8px;background:#fff}
 figcaption{font-size:.85em;color:var(--muted);margin-top:.6em}
+.revised{color:#d32f2f;font-weight:500}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]) .revised{color:#ff8a80}}
+:root[data-theme=dark] .revised{color:#ff8a80}
+:root[data-theme=light] .revised{color:#d32f2f}
 hr{border:0;border-top:1px solid var(--line);margin:2em 0}
 details{margin:.5em 0;border:1px solid var(--line);border-radius:8px;padding:.4em .8em}
 summary{cursor:pointer;font-weight:600}
@@ -70,6 +74,7 @@ summary{cursor:pointer;font-weight:600}
 </tbody></table>
 <p>왼쪽 메뉴에서 문서를 선택하세요. 상단 검색으로 메뉴를 필터할 수 있습니다.</p></section><section id="rb-00" class="doc" hidden><h1>바이스슈발츠 종합 룰</h1>
 <blockquote><strong>ver. 1.111</strong> — 최종 갱신일: 2026년 5월 19일 원문(일본판) 구성을 그대로 따른 한국어판. 용어는 <a href="../../GLOSSARY.md" target="_blank" rel="noopener">GLOSSARY</a> 기준(ws_auto 코퍼스 정렬).</blockquote>
+<blockquote><strong><span class="revised">빨간색</span></strong> 으로 표시된 부분은 이번 개정판(<strong>ver.1.111</strong>)에서 새로 바뀐 내용입니다 — 공식 룰북과 동일한 표기 방식입니다. (해당: 2.7.1.1 · 8.4.1 · 10.8.1 체인지)</blockquote>
 <h2>목차</h2>
 <table><thead><tr><th>장</th><th>제목</th><th>파일</th></tr></thead><tbody><tr><td>1</td><td>게임 개요</td><td><a href="01-게임-개요.md" target="_blank" rel="noopener">01-게임-개요.md</a></td></tr><tr><td>2</td><td>카드 정보</td><td><a href="02-카드-정보.md" target="_blank" rel="noopener">02-카드-정보.md</a></td></tr><tr><td>3</td><td>게임의 영역</td><td><a href="03-게임-영역.md" target="_blank" rel="noopener">03-게임-영역.md</a></td></tr><tr><td>4</td><td>게임의 기초 용어</td><td><a href="04-기초-용어.md" target="_blank" rel="noopener">04-기초-용어.md</a></td></tr><tr><td>5</td><td>게임의 준비</td><td><a href="05-게임-준비.md" target="_blank" rel="noopener">05-게임-준비.md</a></td></tr><tr><td>6</td><td>게임의 진행</td><td><a href="06-게임-진행.md" target="_blank" rel="noopener">06-게임-진행.md</a></td></tr><tr><td>7</td><td>어택과 배틀</td><td><a href="07-어택과-배틀.md" target="_blank" rel="noopener">07-어택과-배틀.md</a></td></tr><tr><td>8</td><td>카드나 능력의 플레이와 해결</td><td><a href="08-플레이와-해결.md" target="_blank" rel="noopener">08-플레이와-해결.md</a></td></tr><tr><td>9</td><td>룰 처리</td><td><a href="09-룰-처리.md" target="_blank" rel="noopener">09-룰-처리.md</a></td></tr><tr><td>10</td><td>키워드와 키워드 능력</td><td><a href="10-키워드-능력.md" target="_blank" rel="noopener">10-키워드-능력.md</a></td></tr><tr><td>11</td><td>기타</td><td><a href="11-기타.md" target="_blank" rel="noopener">11-기타.md</a></td></tr></tbody></table>
 <hr>
@@ -170,7 +175,7 @@ summary{cursor:pointer;font-weight:600}
 <ul>
 <li><strong>2.7.1.</strong> 이 카드를 플레이하기 위한 코스트를 나타내는 정보입니다. 이 정보는, 종별 「캐릭터」 「이벤트」를 가진 카드가 가집니다.</li>
 <ul>
-<li><strong>2.7.1.1.</strong> 능력이나 효과에 의해, 이 코스트는 특별히 「(이 카드의 종별)의 코스트」 혹은 「(이 카드의 카드명)의 코스트」로서 참조됩니다.</li>
+<li><strong>2.7.1.1.</strong> <span class="revised">능력이나 효과에 의해, 이 코스트는 특별히 「(이 카드의 종별)의 코스트」 혹은 「(이 카드의 카드명)의 코스트」로서 참조됩니다.</span></li>
 </ul>
 <li><strong>2.7.2.</strong> 이 카드를 플레이하기 위해서는, 코스트에 표시된 수와 같은 매수의 카드를 스톡 존에서 대기실로 이동시킬 필요가 있습니다. 자세히는 후술 「카드나 능력의 플레이와 해결」을 참조해 주세요.</li>
 </ul>
@@ -799,10 +804,10 @@ summary{cursor:pointer;font-weight:600}
 </ul>
 <h2>8.4. 코스트와 지불</h2>
 <ul>
-<li><strong>8.4.1.</strong> 텍스트 중에 [ ]로 묶인 행동이 지시되는 경우, 그것은 그 능력이나 효과의 코스트라고 불립니다.</li>
+<li><strong>8.4.1.</strong> <span class="revised">텍스트 중에 [ ]로 묶인 행동이 지시되는 경우, 그것은 그 능력이나 효과의 코스트라고 불립니다.</span></li>
 <ul>
-<li><strong>8.4.1.1.</strong> 기동 능력이나 자동 능력의 맨 앞의 코스트는, 특별히 「그 능력의 코스트」로서 참조됩니다.</li>
-<li><strong>8.4.1.2.</strong> 능력의 맨 앞 이외에 표기되는 코스트는, 특별히 「그 효과의 코스트」로서 참조됩니다.</li>
+<li><strong>8.4.1.1.</strong> <span class="revised">기동 능력이나 자동 능력의 맨 앞의 코스트는, 특별히 「그 능력의 코스트」로서 참조됩니다.</span></li>
+<li><strong>8.4.1.2.</strong> <span class="revised">능력의 맨 앞 이외에 표기되는 코스트는, 특별히 「그 효과의 코스트」로서 참조됩니다.</span></li>
 </ul>
 <li><strong>8.4.2.</strong> 「코스트를 지불한다」란 「코스트로 표시된 행동을 실행한다」를 의미합니다.</li>
 <ul>
@@ -1086,7 +1091,7 @@ summary{cursor:pointer;font-weight:600}
 </ul>
 <h2>10.8. 체인지</h2>
 <ul>
-<li><strong>10.8.1.</strong> 체인지란, 효과 안에서 「이 능력을 가진 캐릭터를 특정 영역에 놓고, 무대 이외의 지정한 영역의 특정 캐릭터를 원래 캐릭터가 있던 영역에 놓는다」 또는 「이 능력을 가진 캐릭터를, 특정 영역에 있는 특정 캐릭터 카드와 서로 바꾼다」라는 행동의 실행을 수반하는 일련의 능력을 나타내는 키워드입니다. 이 말 자체는 능력이 아니며, 효과상의 의미는 없습니다.</li>
+<li><strong>10.8.1.</strong> 체인지란, 효과 안에서 「이 능력을 가진 캐릭터를 <span class="revised">특정 영역에 놓고, 무대 이외의 지정한 영역</span>의 특정 캐릭터를 원래 캐릭터가 있던 영역에 놓는다」 또는 「이 능력을 가진 캐릭터를, 특정 영역에 있는 특정 캐릭터 카드와 서로 바꾼다」라는 행동의 실행을 수반하는 일련의 능력을 나타내는 키워드입니다. 이 말 자체는 능력이 아니며, 효과상의 의미는 없습니다.</li>
 <li><strong>10.8.2.</strong> 『（능력 종류 아이콘） 체인지 （문장）』으로 표시되는 능력은, 모두 키워드 「체인지」를 가진 능력입니다.</li>
 <li><strong>10.8.3.</strong> 체인지에 의해 이 능력을 가진 캐릭터를 특정 영역에 있는 특정 캐릭터 카드와 서로 바꾸는 경우, 이 능력의 해결 시에, 이 능력을 가진 캐릭터가 칸에서 칸 이외로의 영역 이동을 하고 있거나, 지정된 영역에 지정된 캐릭터 카드가 존재하지 않거나 한 경우, 캐릭터 카드의 교체는 실행되지 않습니다.</li>
 <li><strong>10.8.4.</strong> 『이 카드가 『체인지』로 무대에 놓였을 때』란, 『당신이 키워드 『체인지』를 가진 자동 능력을 플레이하고, 그 효과로 이 카드가 무대 이외의 영역에서 무대에 놓였을 때』를 의미합니다.</li>
@@ -1402,10 +1407,10 @@ summary{cursor:pointer;font-weight:600}
 <li>비공개 영역에 공개되어 있는 카드가 이동할 때의 룰을 변경했습니다.</li>
 <li>포커스 아이콘을 정의했습니다.</li>
 </ul>
-<li><strong>2026년 5월 19일 ver. 1.111</strong> 적용 개시</li>
+<li><span class="revised"><strong>2026년 5월 19일 ver. 1.111</strong> 적용 개시</span></li>
 <ul>
-<li>「~의 코스트」라는 표기의 정의를 실시했습니다.</li>
-<li>체인지의 텍스트 표기를 명확화했습니다.</li>
+<li><span class="revised">「~의 코스트」라는 표기의 정의를 실시했습니다.</span></li>
+<li><span class="revised">체인지의 텍스트 표기를 명확화했습니다.</span></li>
 </ul>
 </ul></section>
 <section id="errata" class="doc" hidden><h1>바이스슈발츠 에라타 (카드 정정)</h1>
