@@ -23,9 +23,10 @@ const DOCS = [
   { group: "종합 룰(룰북)", id: "rb-09", title: "9. 룰 처리", file: "docs/rulebook/09-룰-처리.md" },
   { group: "종합 룰(룰북)", id: "rb-10", title: "10. 키워드 능력", file: "docs/rulebook/10-키워드-능력.md" },
   { group: "종합 룰(룰북)", id: "rb-11", title: "11. 기타", file: "docs/rulebook/11-기타.md" },
+  { group: "Q&A", id: "qa", title: "일반 룰", file: "docs/qa/general/README.md" },
+  { group: "Q&A", id: "qa-cards", title: "카드 지정", file: "docs/qa/cards/README.md" },
   { group: "그 외 자료", id: "errata", title: "에라타 카드 리스트", file: "docs/errata/README.md" },
   { group: "그 외 자료", id: "deck", title: "덱 구축 규칙", file: "docs/deck-rule/README.md" },
-  { group: "그 외 자료", id: "qa", title: "Q&A (일반 룰)", file: "docs/qa/general/README.md" },
   { group: "그 외 자료", id: "floor-basic", title: "기본 플로어 룰", file: "docs/floor-rule/basic.md" },
   { group: "그 외 자료", id: "floor-adv", title: "응용 플로어 룰", file: "docs/floor-rule/advanced.md" },
   { group: "그 외 자료", id: "penalty", title: "페널티 이력", file: "docs/penalty/README.md" },
@@ -112,10 +113,18 @@ function mdToHtml(md, baseDir = ".") {
 }
 
 // ── 섹션 빌드 ─────────────────────────────────────────────
+// Q&A 섹션: 각 항목을 .qa-item으로 감싸고 상단에 필터 입력 추가(항목이 많아 검색 필요)
+const wrapQa = (html) => {
+  const parts = html.split(/(?=<h2)/);
+  const intro = parts[0] || "";
+  const items = parts.slice(1).map((p) => `<div class="qa-item">${p}</div>`).join("");
+  return intro + `<input class="qa-filter" placeholder="이 목록에서 검색 (카드명·키워드)…" oninput="qaFilter(this)"><p class="qa-count"></p>` + items;
+};
 const sections = DOCS.map((d) => {
   let html;
   try { html = mdToHtml(rd(d.file), path.dirname(d.file)); }
   catch { html = `<p><em>(${d.file} 없음)</em></p>`; }
+  if (d.id === "qa" || d.id === "qa-cards") html = wrapQa(html);
   return { ...d, html };
 });
 
@@ -191,6 +200,10 @@ figcaption{font-size:.85em;color:var(--muted);margin-top:.6em}
 @media(prefers-color-scheme:dark){:root:not([data-theme=light]) .revised{color:#ff8a80}}
 :root[data-theme=dark] .revised{color:#ff8a80}
 :root[data-theme=light] .revised{color:#d32f2f}
+.qa-filter{width:100%;padding:9px 12px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--fg);font-size:14px;margin:.6em 0 .2em}
+.qa-count{color:var(--muted);font-size:.85em;margin:.1em 0 1em}
+.qa-item{border-top:1px solid var(--line);padding-top:.2em;margin-top:.8em}
+.qa-item h2{font-size:1.1em;border:0;margin-top:.5em}
 hr{border:0;border-top:1px solid var(--line);margin:2em 0}
 details{margin:.5em 0;border:1px solid var(--line);border-radius:8px;padding:.4em .8em}
 summary{cursor:pointer;font-weight:600}
@@ -224,8 +237,10 @@ function show(id){
 }
 links.forEach(a=>a.addEventListener('click',e=>{show(a.dataset.target);}));
 function filterNav(v){v=v.trim().toLowerCase();links.forEach(a=>a.classList.toggle('hide',v&&!a.textContent.toLowerCase().includes(v)));document.querySelectorAll('.nav-group').forEach(g=>{const any=[...g.querySelectorAll('.nav-link')].some(a=>!a.classList.contains('hide'));g.style.display=any?'':'none';});}
+function qaFilter(inp){const q=inp.value.trim().toLowerCase();const sec=inp.closest('.doc');const items=[...sec.querySelectorAll('.qa-item')];let shown=0;items.forEach(it=>{const m=!q||it.textContent.toLowerCase().includes(q);it.style.display=m?'':'none';if(m)shown++;});const c=sec.querySelector('.qa-count');if(c)c.textContent=q?(shown+' / '+items.length+'건'):(items.length+'건');}
 function tglTheme(){const r=document.documentElement;const cur=r.getAttribute('data-theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');const nx=cur==='dark'?'light':'dark';r.setAttribute('data-theme',nx);try{localStorage.setItem('ws-theme',nx)}catch(e){}}
 (function(){try{const t=localStorage.getItem('ws-theme');if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}
+ document.querySelectorAll('.qa-filter').forEach(qaFilter);
  const h=location.hash.slice(1);show(document.getElementById(h)?h:'home');})();
 window.addEventListener('hashchange',()=>{const h=location.hash.slice(1);if(document.getElementById(h))show(h);});
 </script>
