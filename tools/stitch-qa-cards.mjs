@@ -50,7 +50,7 @@ for (let n = 1; n <= 5; n++) {
     entries.push({ id, b });
   }
 }
-entries.sort((a, b) => a.id - b.id);
+entries.sort((a, b) => b.id - a.id); // Q번호 역순(최신순)
 // id 중복 제거(안전)
 const seen = new Set(); entries = entries.filter((e) => !seen.has(e.id) && seen.add(e.id));
 
