@@ -124,7 +124,7 @@ const sections = DOCS.map((d) => {
 // 홈(소개) 섹션
 const home = `<h1>바이스슈발츠 룰 한글화</h1>
 <p><a href="https://ws-tcg.com/rules/" target="_blank" rel="noopener">ws-tcg.com/rules</a> 의 일본판 자료(종합 룰·에라타·덱 구축 규칙·Q&A·플로어 룰·페널티)를 <strong>일본판 구성에 최대한 맞춰</strong> 한국어로 옮긴 팬 번역입니다.</p>
-<blockquote><strong>면책</strong> · 팬 제작 <strong>비공식·비영리</strong> 참고 자료입니다. 룰·데이터 출처 ⓒ BushiRoad / <a href="https://ws-tcg.com/" target="_blank" rel="noopener">ws-tcg.com</a>. BushiRoad와 제휴·후원 관계가 없습니다.</blockquote>
+<blockquote>팬 제작 <strong>비공식·비영리</strong> 참고 자료입니다. 룰·데이터 출처 ⓒ BushiRoad / <a href="https://ws-tcg.com/" target="_blank" rel="noopener">ws-tcg.com</a>.</blockquote>
 <table><thead><tr><th>자료</th><th>내용</th></tr></thead><tbody>
 <tr><td>종합 룰(룰북)</td><td>ver.1.111 · 11장 (660섹션)</td></tr>
 <tr><td>에라타</td><td>167항목</td></tr>
