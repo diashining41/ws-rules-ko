@@ -7,3 +7,9 @@ site/
 
 # 에이전트 스크래치 파일
 scratch_*
+
+# 내부 카드 데이터 의존 빌드 도구(비공개)
+tools/errata-names.mjs
+tools/qa-names.mjs
+tools/normalize-qa-cards.mjs
+tools/stitch-qa-cards.mjs
