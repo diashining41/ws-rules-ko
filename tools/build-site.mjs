@@ -41,15 +41,8 @@ const inline = (s) =>
    .replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>")
    .replace(/`([^`]+)`/g, "<code>$1</code>");
 
-// 로컬 이미지는 data URI로 인라인(자체완결) · 외부 URL은 그대로 <img>
-const embedImg = (alt, src, baseDir) => {
-  if (/^https?:/i.test(src)) return `<figure><img src="${src}" alt="${alt}" loading="lazy"><figcaption>${alt}</figcaption></figure>`;
-  try {
-    const buf = fs.readFileSync(path.resolve(ROOT, baseDir, src));
-    const ext = path.extname(src).slice(1).toLowerCase().replace("jpg", "jpeg");
-    return `<figure><img src="data:image/${ext};base64,${buf.toString("base64")}" alt="${alt}"><figcaption>${alt}</figcaption></figure>`;
-  } catch { return `<p><em>[이미지 없음: ${src}]</em></p>`; }
-};
+// 저작권 문제로 이미지는 넣지 않는다 — 이미지 마크다운은 대체 텍스트만 표시
+const embedImg = (alt) => (alt ? `<p><em>(${alt})</em></p>` : "");
 
 function mdToHtml(md, baseDir = ".") {
   md = md.replace(/<!--[\s\S]*?-->/g, "");           // 주석 제거
@@ -113,24 +106,6 @@ function mdToHtml(md, baseDir = ".") {
 }
 
 // ── 섹션 빌드 ─────────────────────────────────────────────
-// ── 아이콘: docs/assets/icons/*.png,gif → data URI 인라인, 자리표시자 교체 ──
-const ICON_DIR = path.join(ROOT, "docs", "assets", "icons");
-const iconData = {};
-try {
-  for (const f of fs.readdirSync(ICON_DIR)) {
-    const nm = f.replace(/\.(png|gif)$/, ""), ext = f.endsWith(".gif") ? "gif" : "png";
-    iconData[nm] = `data:image/${ext};base64,${fs.readFileSync(path.join(ICON_DIR, f)).toString("base64")}`;
-  }
-} catch {}
-const ICON = { 캐릭터: "type-cha", 이벤트: "type-ev", 클라이맥스: "type-cx", 카운터: "counter", 클록: "clock", 소울: "soul", 샷: "shot", 스톡: "stock", 바운스: "bounce", 살베지: "salvage", 트레저: "treasure", 스탠바이: "standby", 드로우: "draw", 초이스: "choice", 포커스: "focus", 게이트: "gate" };
-const TRIGGER = ["소울", "샷", "스톡", "바운스", "살베지", "트레저", "스탠바이", "드로우", "초이스", "포커스", "게이트"];
-const iconImg = (n) => (ICON[n] && iconData[ICON[n]] ? `<img class="ic" src="${iconData[ICON[n]]}" alt="${n} 아이콘" title="${n} 아이콘">` : null);
-function iconize(html, docId) {
-  html = html.replace(/\[(캐릭터|이벤트|클라이맥스|카운터|클록|소울|샷|스톡|바운스|살베지|트레저|스탠바이|드로우|초이스|포커스|게이트) 아이콘\]/g, (m, n) => iconImg(n) || m);
-  if (/^(qa|errata)/.test(docId)) html = html.replace(new RegExp(`(${TRIGGER.join("|")}) 아이콘`, "g"), (m, n) => iconImg(n) || m);
-  return html;
-}
-
 // Q&A 섹션: 각 항목을 .qa-item으로 감싸고 상단에 필터 입력 추가(항목이 많아 검색 필요)
 const wrapQa = (html) => {
   const parts = html.split(/(?=<h2)/);
@@ -142,7 +117,6 @@ const sections = DOCS.map((d) => {
   let html;
   try { html = mdToHtml(rd(d.file), path.dirname(d.file)); }
   catch { html = `<p><em>(${d.file} 없음)</em></p>`; }
-  html = iconize(html, d.id);
   if (d.id === "qa" || d.id === "qa-cards") html = wrapQa(html);
   return { ...d, html };
 });
@@ -212,9 +186,6 @@ th,td{border:1px solid var(--line);padding:6px 10px;text-align:left;vertical-ali
 th{background:var(--side)}
 blockquote{margin:1em 0;padding:.6em 1em;border-left:4px solid var(--accent);background:var(--codebg);border-radius:0 8px 8px 0;color:var(--muted)}
 code{background:var(--codebg);padding:.1em .35em;border-radius:5px;font-size:.9em}
-figure{margin:1.4em 0;text-align:center}
-figure img{max-width:100%;height:auto;border:1px solid var(--line);border-radius:8px;background:#fff}
-figcaption{font-size:.85em;color:var(--muted);margin-top:.6em}
 .revised{color:#d32f2f;font-weight:500}
 @media(prefers-color-scheme:dark){:root:not([data-theme=light]) .revised{color:#ff8a80}}
 :root[data-theme=dark] .revised{color:#ff8a80}
@@ -223,7 +194,6 @@ figcaption{font-size:.85em;color:var(--muted);margin-top:.6em}
 .qa-count{color:var(--muted);font-size:.85em;margin:.1em 0 1em}
 .qa-item{border-top:1px solid var(--line);padding-top:.2em;margin-top:.8em}
 .qa-item h2{font-size:1.1em;border:0;margin-top:.5em}
-.ic{height:1.15em;width:auto;vertical-align:-.22em;margin:0 1px;background:#fff;border-radius:3px;box-shadow:0 0 0 1px rgba(0,0,0,.12)}
 hr{border:0;border-top:1px solid var(--line);margin:2em 0}
 details{margin:.5em 0;border:1px solid var(--line);border-radius:8px;padding:.4em .8em}
 summary{cursor:pointer;font-weight:600}
