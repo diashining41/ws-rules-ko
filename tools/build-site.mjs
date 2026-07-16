@@ -11,6 +11,8 @@ const rd = (p) => fs.readFileSync(path.join(ROOT, p), "utf8");
 
 // ── 문서 목록 (일본판 구성 순서) ──────────────────────────
 const DOCS = [
+  { group: "플로어 룰(대회 매너)", id: "floor-basic", title: "기본 플로어 룰", file: "docs/floor-rule/basic.md" },
+  { group: "플로어 룰(대회 매너)", id: "floor-adv", title: "응용 플로어 룰", file: "docs/floor-rule/advanced.md" },
   { group: "종합 룰(룰북)", id: "rb-00", title: "종합 룰 개요", file: "docs/rulebook/00-표지-목차.md" },
   { group: "종합 룰(룰북)", id: "rb-01", title: "1. 게임 개요", file: "docs/rulebook/01-게임-개요.md" },
   { group: "종합 룰(룰북)", id: "rb-02", title: "2. 카드 정보", file: "docs/rulebook/02-카드-정보.md" },
@@ -27,8 +29,6 @@ const DOCS = [
   { group: "Q&A", id: "qa-cards", title: "카드 지정", file: "docs/qa/cards/README.md" },
   { group: "그 외 자료", id: "errata", title: "에라타 카드 리스트", file: "docs/errata/README.md" },
   { group: "그 외 자료", id: "deck", title: "덱 구축 규칙", file: "docs/deck-rule/README.md" },
-  { group: "그 외 자료", id: "floor-basic", title: "기본 플로어 룰", file: "docs/floor-rule/basic.md" },
-  { group: "그 외 자료", id: "floor-adv", title: "응용 플로어 룰", file: "docs/floor-rule/advanced.md" },
   { group: "그 외 자료", id: "penalty", title: "페널티 이력", file: "docs/penalty/README.md" },
   { group: "참고", id: "glossary", title: "용어 글로서리", file: "GLOSSARY.md" },
 ];
@@ -149,7 +149,7 @@ const sections = DOCS.map((d) => {
 
 // 홈(소개) 섹션
 const home = `<h1>바이스슈발츠 룰 한글화</h1>
-<p><a href="https://ws-tcg.com/rules/" target="_blank" rel="noopener">ws-tcg.com/rules</a> 의 일본판 자료(종합 룰·에라타·덱 구축 규칙·Q&A·플로어 룰·페널티)를 <strong>일본판 구성 그대로</strong> 한국어로 옮긴 팬 번역입니다.</p>
+<p><a href="https://ws-tcg.com/rules/" target="_blank" rel="noopener">ws-tcg.com/rules</a> 의 일본판 자료(종합 룰·에라타·덱 구축 규칙·Q&A·플로어 룰·페널티)를 <strong>일본판 구성에 최대한 맞춰</strong> 한국어로 옮긴 팬 번역입니다.</p>
 <blockquote><strong>면책</strong> · 팬 제작 <strong>비공식·비영리</strong> 참고 자료입니다. 룰·데이터 출처 ⓒ BushiRoad / <a href="https://ws-tcg.com/" target="_blank" rel="noopener">ws-tcg.com</a>. BushiRoad와 제휴·후원 관계가 없습니다.</blockquote>
 <table><thead><tr><th>자료</th><th>내용</th></tr></thead><tbody>
 <tr><td>종합 룰(룰북)</td><td>ver.1.111 · 11장 (660섹션)</td></tr>

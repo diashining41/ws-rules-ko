@@ -2,7 +2,7 @@
 
 👉 **공개 페이지: https://diashining41.github.io/ws-rules-ko/**
 
-[ws-tcg.com/rules](https://ws-tcg.com/rules/) 의 일본판 자료(종합 룰·Q&A·에라타·덱 구축 규칙·플로어 룰)를 **일본판 구성 그대로** 한국어로 옮기는 프로젝트.
+[ws-tcg.com/rules](https://ws-tcg.com/rules/) 의 일본판 자료(종합 룰·Q&A·에라타·덱 구축 규칙·플로어 룰)를 **일본판 구성에 최대한 맞춰** 한국어로 옮기는 프로젝트.
 
 용어는 인접 프로젝트 **`ws_auto`(전 166작품·기본카드 41,629종 한글화)** 코퍼스 표기에 맞춰, 룰북과 카드 텍스트가 동일 용어를 쓰도록 한다. → **[GLOSSARY.md](GLOSSARY.md)**
 
