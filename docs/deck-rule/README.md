@@ -1,6 +1,6 @@
 <!--
 원본: https://ws-tcg.com/rules/deck_rule/
-기준일: 2026-06
+기준일: 2026-08-24
 용어 기준: ../../GLOSSARY.md
 -->
 
@@ -315,6 +315,7 @@
 | WS/SPR-P09 / WS/SPR-P09b | 레츠! 바이스슈발츠!! 치하루 |
 | WS/WSPR-P21 / WS/WSPR-P21S | Happy 18th Anniversary !! [흰색] |
 | WS/WSPR-P23 | Happy 18th Anniversary !! [추억] |
+| WS/WSPR-P24 | Happy 18th Anniversary !! [축제] |
 | WS/WSPR-P25 | 18년, 그 너머로 |
 | WS/WSPR-P22a / WS/WSPR-P22b / WS/WSPR-P22c / WS/WSPR-P22d | BUSHIROAD CARD FIGHT 2026 |
 | WS/WSPR-P26 | GiGO의 타이야키 아오키 히나 |
@@ -928,6 +929,6 @@
 
 상세한 규칙을 알고 싶으신 분은 이쪽 PDF를 확인해 주십시오.
 
-- ■ 바이스슈발츠 덱 구축 규칙 ver.1.136 (PDF 형식) (2026/6/24 갱신)
+- ■ 바이스슈발츠 덱 구축 규칙 ver.1.137 (PDF 형식) (2026/7/17 갱신)
 
 ※ 레어도 VR(비주얼 레어)에 관한 특례 규칙이나, 특별한 공통면 카드에 관한 규칙 등은 이곳에 게재되어 있습니다.

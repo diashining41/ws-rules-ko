@@ -10,11 +10,11 @@
 
 | 자료 | 소스 | 상태 |
 |------|------|------|
-| 종합 룰(룰북) ver.1.111 | PDF 23p, 11챕터 | ✅ 완료 (660섹션 1:1 검증) |
+| 종합 룰(룰북) ver.1.112 | PDF 23p, 11챕터 | ✅ 완료 (667섹션 1:1 검증) |
 | 에라타 카드 리스트 | HTML 167항목 | ✅ 완료 (카드명 원문 병기) |
-| 덱 구축 규칙 | HTML | ✅ 완료 (165작품·388/389 카드) |
+| 덱 구축 규칙 | HTML | ✅ 완료 (165작품 · 특례 169장 · 제한 249종) |
 | Q&A (일반 룰) | 동적 DB 97건 | ✅ 완료 (1단계) |
-| Q&A (카드 지정) | 동적 DB 610건 | ⏸ 2단계 (요청 시) |
+| Q&A (카드 지정) | 동적 DB 612건 | ✅ 완료 (2단계, Q번호 역순) |
 | 플로어 룰(기본/응용) | PDF 2종 | ✅ 완료 (응용=2문서·10部) |
 | 페널티 이력 | HTML 22건 | ✅ 완료 |
 
@@ -23,8 +23,8 @@
 ```
 GLOSSARY.md          JP→KR 용어 기준
 sources/             일본판 원본 + 추출 텍스트
-  WS_rule_1.111.pdf
-  WS_rule_1.111.ja.txt   (pdftotext -enc UTF-8 -raw)
+  WS_rule_1.112.pdf
+  WS_rule_1.112.ja.txt   (pdftotext -enc UTF-8 -raw)
 docs/
   rulebook/          종합 룰 한글판 (챕터별 01~11)
   errata/ deck-rule/ floor-rule/ penalty/ qa/general/
@@ -37,7 +37,7 @@ tools/
 종합 룰 PDF는 임베디드 CJK 폰트라 **`-raw` 옵션**이 있어야 2단 조판이 올바른 읽기 순서로 추출된다:
 
 ```bash
-pdftotext -enc UTF-8 -raw sources/WS_rule_1.111.pdf sources/WS_rule_1.111.ja.txt
+pdftotext -enc UTF-8 -raw sources/WS_rule_1.112.pdf sources/WS_rule_1.112.ja.txt
 ```
 
 카드 타입·카운터·클록·소울·트리거 등 **아이콘 심볼 글리프는 빠지므로**, 한글판에서 `[카운터 아이콘]` 형태로 보완한다.
@@ -50,8 +50,8 @@ node tools/check-sections.mjs   # 원문의 모든 섹션 번호가 한글판에
 
 ## 버전
 
-- 종합 룰: **ver. 1.111** (2026-05-19)
-- 원본 URL: `https://ws-tcg.com/wordpress/wp-content/uploads/2026/05/19125324/WS_rule_1.111.pdf`
+- 종합 룰: **ver. 1.112** (2026-08-24)
+- 원본 URL: `https://ws-tcg.com/wordpress/wp-content/uploads/2026/08/24155315/WS_rule_1.112.pdf`
 
 ## 면책
 
