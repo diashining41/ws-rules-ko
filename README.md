@@ -21,20 +21,39 @@
 ## 구조
 
 ```
+CLAUDE.md            작업 지침 · 새 PC 셋업 · 룰 갱신 절차
 GLOSSARY.md          JP→KR 용어 기준
-sources/             일본판 원본 + 추출 텍스트
-  WS_rule_1.112.pdf
-  WS_rule_1.112.ja.txt   (pdftotext -enc UTF-8 -raw)
-docs/
+docs/                한글판 원고 (실제 소스)
   rulebook/          종합 룰 한글판 (챕터별 01~11)
-  errata/ deck-rule/ floor-rule/ penalty/ qa/general/
+  errata/ deck-rule/ floor-rule/ penalty/ qa/general/ qa/cards/
 tools/
+  fetch-sources.mjs  sources/ 복원·갱신 (공식 사이트에서 재수집)
   check-sections.mjs 원문 대비 섹션 번호 완전성 검증
+  build-site.mjs     docs/**/*.md → index.html
+sources/             (git 미포함) 일본판 원본 + 추출 텍스트
+index.html           빌드 산출물 — GitHub Pages가 이 파일을 서빙
 ```
+
+원본 재배포를 피하려고 `sources/` 는 커밋하지 않는다. `fetch-sources.mjs` 가 공식 사이트에서 다시 받는다.
+
+## 시작하기
+
+필요한 것은 **Node.js 18+** 와 **Git for Windows**(`pdftotext` 동봉) 뿐. npm 의존성은 없다.
+macOS/Linux는 `poppler-utils` 를 따로 설치한다.
+
+```bash
+git clone https://github.com/diashining41/ws-rules-ko.git ws_rules && cd ws_rules
+node tools/fetch-sources.mjs      # sources/ 복원 (약 4MB, 2~3분)
+node tools/check-sections.mjs     # 섹션 번호 1:1 검증
+node tools/build-site.mjs         # index.html 재생성
+```
+
+자세한 작업 지침과 룰 갱신 절차는 **[CLAUDE.md](CLAUDE.md)**.
 
 ## 소스 추출
 
-종합 룰 PDF는 임베디드 CJK 폰트라 **`-raw` 옵션**이 있어야 2단 조판이 올바른 읽기 순서로 추출된다:
+종합 룰 PDF는 임베디드 CJK 폰트라 **`-raw` 옵션**이 있어야 2단 조판이 올바른 읽기 순서로 추출된다.
+`fetch-sources.mjs` 가 이 옵션으로 자동 처리하며, 수동으로는:
 
 ```bash
 pdftotext -enc UTF-8 -raw sources/WS_rule_1.112.pdf sources/WS_rule_1.112.ja.txt

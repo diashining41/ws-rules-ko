@@ -1,0 +1,2 @@
+# 빌드 산출물은 LF로 생성되므로 작업 트리도 LF로 통일한다 (core.autocrlf 값과 무관하게)
+* text=auto eol=lf
