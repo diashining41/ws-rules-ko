@@ -10,13 +10,13 @@
 
 | 자료 | 소스 | 상태 |
 |------|------|------|
-| 종합 룰(룰북) ver.1.112 | PDF 23p, 11챕터 | ✅ 완료 (667섹션 1:1 검증) |
-| 에라타 카드 리스트 | HTML 167항목 | ✅ 완료 (카드명 원문 병기) |
-| 덱 구축 규칙 | HTML | ✅ 완료 (165작품 · 특례 169장 · 제한 249종) |
+| 종합 룰(룰북) ver.1.113 | PDF 23p, 11챕터 | ✅ 완료 (673섹션 1:1 검증) |
+| 에라타 카드 리스트 | HTML 170항목 | ✅ 완료 (카드명 원문 병기) |
+| 덱 구축 규칙 | HTML | ✅ 완료 (170작품 · 특례 169장 · 제한 249종) |
 | Q&A (일반 룰) | 동적 DB 97건 | ✅ 완료 (1단계) |
 | Q&A (카드 지정) | 동적 DB 612건 | ✅ 완료 (2단계, Q번호 역순) |
 | 플로어 룰(기본/응용) | PDF 2종 | ✅ 완료 (응용=2문서·10部) |
-| 페널티 이력 | HTML 22건 | ✅ 완료 |
+| 페널티 이력 | HTML 23건 | ✅ 완료 |
 
 ## 구조
 
@@ -56,7 +56,7 @@ node tools/build-site.mjs         # index.html 재생성
 `fetch-sources.mjs` 가 이 옵션으로 자동 처리하며, 수동으로는:
 
 ```bash
-pdftotext -enc UTF-8 -raw sources/WS_rule_1.112.pdf sources/WS_rule_1.112.ja.txt
+pdftotext -enc UTF-8 -raw sources/WS_rule_1.113.pdf sources/WS_rule_1.113.ja.txt
 ```
 
 카드 타입·카운터·클록·소울·트리거 등 **아이콘 심볼 글리프는 빠지므로**, 한글판에서 `[카운터 아이콘]` 형태로 보완한다.
@@ -69,8 +69,8 @@ node tools/check-sections.mjs   # 원문의 모든 섹션 번호가 한글판에
 
 ## 버전
 
-- 종합 룰: **ver. 1.112** (2026-08-24)
-- 원본 URL: `https://ws-tcg.com/wordpress/wp-content/uploads/2026/08/24155315/WS_rule_1.112.pdf`
+- 종합 룰: **ver. 1.113** (2026-10-15)
+- 원본 URL: `https://ws-tcg.com/wordpress/wp-content/uploads/2026/10/15161101/WS_rule_1.113.pdf`
 
 ## 면책
 

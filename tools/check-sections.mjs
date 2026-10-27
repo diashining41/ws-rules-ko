@@ -2,7 +2,7 @@
 //
 //   node tools/check-sections.mjs
 //
-// JP: sources/WS_rule_1.112.ja.txt 본문에서 줄머리 섹션 번호(1.2.3. …)를 뽑는다.
+// JP: sources/WS_rule_1.113.ja.txt 본문에서 줄머리 섹션 번호(1.2.3. …)를 뽑는다.
 // KR: docs/rulebook/*.md 의 제목(# N. / ## N.M.)과 항목(- **N.M.K.**)에서 번호를 뽑는다.
 // 챕터별로 누락/추가를 보고한다. 인라인 참조(예: "클록 존(3.8)")는 줄머리·**볼드**만
 // 잡으므로 오탐되지 않는다.
@@ -12,7 +12,7 @@ import path from "path";
 import { fileURLToPath } from "url";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
-const SRC = path.join(ROOT, "sources", "WS_rule_1.112.ja.txt");
+const SRC = path.join(ROOT, "sources", "WS_rule_1.113.ja.txt");
 const RB = path.join(ROOT, "docs", "rulebook");
 
 // ── JP 본문 파싱 ────────────────────────────────────────────

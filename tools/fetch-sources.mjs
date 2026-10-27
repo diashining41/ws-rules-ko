@@ -69,7 +69,7 @@ const TASKS = {
   async rulebook() {
     const { rulebook } = await findPdfs();
     if (!rulebook) throw new Error("종합 룰 PDF 링크를 찾지 못함 — " + RULES_PAGE + " 확인");
-    const name = rulebook.split("/").pop();                 // WS_rule_1.112.pdf
+    const name = rulebook.split("/").pop();                 // WS_rule_1.113.pdf
     const ver = name.replace(/^WS_rule_|\.pdf$/g, "");
     await download(rulebook, name);
     pdf2txt(name, `WS_rule_${ver}.ja.txt`);

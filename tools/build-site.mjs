@@ -126,12 +126,12 @@ const home = `<h1>바이스슈발츠 룰 한글화</h1>
 <p><a href="https://ws-tcg.com/rules/" target="_blank" rel="noopener">ws-tcg.com/rules</a> 의 일본판 자료(종합 룰·에라타·덱 구축 규칙·Q&A·플로어 룰·페널티)를 <strong>일본판 구성에 최대한 맞춰</strong> 한국어로 옮긴 팬 번역입니다.</p>
 <blockquote>팬 제작 <strong>비공식·비영리</strong> 참고 자료입니다. 룰·데이터 출처 ⓒ BushiRoad / <a href="https://ws-tcg.com/" target="_blank" rel="noopener">ws-tcg.com</a>.</blockquote>
 <table><thead><tr><th>자료</th><th>내용</th></tr></thead><tbody>
-<tr><td>종합 룰(룰북)</td><td>ver.1.112 · 11장 (667섹션)</td></tr>
-<tr><td>에라타</td><td>167항목</td></tr>
-<tr><td>덱 구축 규칙</td><td>165작품 + 제한 리스트</td></tr>
+<tr><td>종합 룰(룰북)</td><td>ver.1.113 · 11장 (673섹션)</td></tr>
+<tr><td>에라타</td><td>170항목</td></tr>
+<tr><td>덱 구축 규칙</td><td>170작품 + 제한 리스트</td></tr>
 <tr><td>Q&amp;A(일반 룰)</td><td>97건</td></tr>
 <tr><td>플로어 룰</td><td>기본 + 응용(10部)</td></tr>
-<tr><td>페널티 이력</td><td>22건</td></tr>
+<tr><td>페널티 이력</td><td>23건</td></tr>
 </tbody></table>
 <p>왼쪽 메뉴에서 문서를 선택하세요. 상단 검색으로 메뉴를 필터할 수 있습니다.</p>
 <hr>
@@ -211,7 +211,7 @@ summary{cursor:pointer;font-weight:600}
 <button class="theme" onclick="tglTheme()">🌗 테마</button>
 <div class="wrap">
 <nav class="side">
- <div class="brand"><span class="brand-eyebrow">ヴァイスシュヴァルツ</span>바이스슈발츠 룰 한글화<small>종합 룰 ver.1.112 · 팬 비공식 번역</small></div>
+ <div class="brand"><span class="brand-eyebrow">ヴァイスシュヴァルツ</span>바이스슈발츠 룰 한글화<small>종합 룰 ver.1.113 · 팬 비공식 번역</small></div>
  <input id="q" placeholder="메뉴 검색…" oninput="filterNav(this.value)">
  <div id="nav">${navHtml}</div>
 </nav>
