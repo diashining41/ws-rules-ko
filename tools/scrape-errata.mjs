@@ -43,15 +43,20 @@ for (const blk of blocks) {
 
   const cards = [];
   const fields = { 修正内容: "", 修正理由: "", カード交換: "", その他: [] };
+  // ▼見出しを先に判定する — カードNo.訂正のエラッタは修正内容の中にも「カードNo.：」が出るため
+  let pendingExchange = false;
   for (const p of paras) {
-    if (/カードNo|カード名称|カード番号/.test(p)) {
+    if (/^▼?修正内容/.test(p)) fields.修正内容 = p.replace(/^▼?修正内容\s*/, "").trim();
+    else if (/^▼?修正理由/.test(p)) fields.修正理由 = p.replace(/^▼?修正理由\s*/, "").trim();
+    else if (/^▼?カード交換/.test(p)) {
+      fields.カード交換 = p.replace(/^▼?カード交換に関して\s*/, "").trim();
+      pendingExchange = !fields.カード交換;            // 見出しだけの <p> → 次の <p> が本文
+    } else if (pendingExchange && p.trim()) { fields.カード交換 = p.trim(); pendingExchange = false; }
+    else if (/カードNo|カード名称|カード番号/.test(p)) {
       const no = (p.match(/カード(?:No|番号)[.．]?\s*[:：]\s*([^\n]+)/) || [, ""])[1].trim();
       const nm = (p.match(/カード名称\s*[:：]\s*([^\n]+)/) || [, ""])[1].trim();
       if (no || nm) cards.push({ no, name: nm });
-    } else if (/^▼?修正内容/.test(p)) fields.修正内容 = p.replace(/^▼?修正内容\s*/, "").trim();
-    else if (/^▼?修正理由/.test(p)) fields.修正理由 = p.replace(/^▼?修正理由\s*/, "").trim();
-    else if (/^▼?カード交換/.test(p)) fields.カード交換 = p.replace(/^▼?カード交換に関して\s*/, "").trim();
-    else if (p.trim()) fields.その他.push(p.trim());
+    } else if (p.trim()) fields.その他.push(p.trim());
   }
   entries.push({ id, status, heading, cards, images, ...fields,
     period: dateByPost[id]?.period || "" });
