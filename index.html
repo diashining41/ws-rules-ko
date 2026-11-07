@@ -15,15 +15,59 @@ a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
 .brand{font-weight:700;font-size:15px;padding:6px 8px 12px;line-height:1.35}
 .brand-eyebrow{display:block;font-weight:600;font-size:10px;letter-spacing:.14em;color:var(--accent);margin-bottom:3px}
 .brand small{display:block;font-weight:400;color:var(--muted);font-size:12px;margin-top:3px}
-#q{width:100%;padding:8px 10px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--fg);margin-bottom:10px;font-size:14px}
 .nav-group{margin:10px 0}
 .nav-group-title{font-size:11px;letter-spacing:.04em;color:var(--muted);text-transform:uppercase;padding:4px 8px;font-weight:700}
 .nav-link{display:block;padding:6px 10px;border-radius:7px;color:var(--fg);font-size:14px}
 .nav-link:hover{background:var(--line);text-decoration:none}
 .nav-link.active{background:var(--accent);color:#fff}
-.nav-link.hide{display:none}
 .main{flex:1;min-width:0;padding:32px 40px 80px;max-width:900px}
-.topbar{display:none}
+/* 상단 고정 검색 바 */
+.topstick{position:sticky;top:0;z-index:15;background:var(--bg);margin:-32px -40px 22px;padding:12px 40px 10px;border-bottom:1px solid var(--line)}
+.searchbar{display:flex;gap:8px;align-items:center}
+.sbox{position:relative;flex:1;min-width:0}
+#sq{width:100%;padding:9px 40px 9px 12px;border:1px solid var(--line);border-radius:10px;background:var(--side);color:var(--fg);font-size:15px;font-family:inherit}
+#sq:focus{outline:2px solid var(--accent);outline-offset:-1px;background:var(--bg)}
+.hint{position:absolute;right:10px;top:50%;transform:translateY(-50%);font:12px/1 ui-monospace,Consolas,monospace;color:var(--muted);border:1px solid var(--line);border-radius:4px;padding:3px 6px;pointer-events:none}
+#sq:focus~.hint,#sq:not(:placeholder-shown)~.hint{display:none}
+.icon-btn{flex:0 0 auto;border:1px solid var(--line);background:var(--card);color:var(--fg);border-radius:8px;padding:7px 11px;cursor:pointer;font-size:14px;font-family:inherit}
+.icon-btn:hover{background:var(--side)}
+.recent-pop{position:absolute;left:0;right:0;top:calc(100% + 6px);background:var(--card);border:1px solid var(--line);border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,.14);padding:10px 12px;z-index:25}
+.rc-head{display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--muted);font-weight:700;margin-bottom:8px}
+.linkbtn{border:0;background:none;color:var(--muted);cursor:pointer;font-size:12px;padding:0;font-family:inherit}
+.linkbtn:hover{color:var(--accent)}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{display:inline-flex;align-items:center;border:1px solid var(--line);background:var(--side);color:var(--fg);border-radius:999px;font-size:13px;line-height:1.4}
+.chip button{border:0;background:none;color:inherit;cursor:pointer;font:inherit;padding:3px 4px 3px 11px}
+.chip button.x{padding:3px 9px 3px 4px;color:var(--muted)}
+.chip button.x:hover{color:var(--accent)}
+button.chip{cursor:pointer;padding:3px 11px;font-family:inherit}
+button.chip.on{background:var(--accent);border-color:var(--accent);color:#fff}
+.chip .n{opacity:.7;margin-left:4px}
+.hitbar{display:flex;align-items:center;gap:6px;margin-top:8px;font-size:13px}
+.hitbar[hidden]{display:none}
+.hitbar .icon-btn{padding:3px 10px;font-size:13px}
+#hitpos{flex:1;min-width:0;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+/* 검색 결과 */
+.sr-meta{color:var(--muted);margin:-.4em 0 1em}
+.sr-scope{margin:0 0 1.4em}
+.sr-docs{margin:0 0 1.2em}
+.sr-group{display:flex;justify-content:space-between;gap:10px;margin:1.6em 0 .3em;padding-bottom:4px;border-bottom:1px solid var(--line);font-weight:700;font-size:.95em}
+.sr-group .n{color:var(--muted);font-weight:400;font-size:.92em;white-space:nowrap}
+a.sr{display:block;padding:8px 10px;margin:2px -10px;border-radius:8px;color:var(--fg)}
+a.sr:hover,a.sr:focus{background:var(--side);text-decoration:none;outline:none}
+a.sr:focus-visible{box-shadow:inset 0 0 0 2px var(--accent)}
+.sr-ctx{font-size:12px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sr-txt{font-size:14.5px;line-height:1.6;overflow-wrap:anywhere}
+.sr-more{display:block;margin:1.2em auto;padding:8px 18px}
+.sr-tips{color:var(--muted);font-size:.92em}
+mark{background:#ffe17a;color:inherit;border-radius:2px;padding:0 1px}
+mark.cur{background:var(--accent);color:#fff}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]) mark{background:#6b5412;color:#fff4d2}:root:not([data-theme=light]) mark.cur{background:var(--accent);color:#141619}}
+:root[data-theme=dark] mark{background:#6b5412;color:#fff4d2}
+:root[data-theme=dark] mark.cur{background:var(--accent);color:#141619}
+.flash{animation:flash 2s ease-out}
+@keyframes flash{0%,45%{background:var(--accent-soft)}100%{background:transparent}}
+.scrim{display:none}
 h1{font-size:1.7em;border-bottom:2px solid var(--line);padding-bottom:.3em;margin-top:0}
 h2{font-size:1.35em;margin-top:1.6em;border-bottom:1px solid var(--line);padding-bottom:.2em}
 h3{font-size:1.15em;margin-top:1.3em}h4{font-size:1.02em;color:var(--muted)}
@@ -44,38 +88,57 @@ code{background:var(--codebg);padding:.1em .35em;border-radius:5px;font-size:.9e
 hr{border:0;border-top:1px solid var(--line);margin:2em 0}
 details{margin:.5em 0;border:1px solid var(--line);border-radius:8px;padding:.4em .8em}
 summary{cursor:pointer;font-weight:600}
-.theme{position:fixed;top:12px;right:16px;border:1px solid var(--line);background:var(--card);color:var(--fg);border-radius:20px;padding:5px 12px;cursor:pointer;font-size:13px;z-index:20}
 .menu-btn{display:none}
 @media(max-width:800px){
  .side{position:fixed;left:0;top:0;z-index:30;transform:translateX(-100%);transition:.2s}
  .side.open{transform:none}
- .main{padding:64px 18px 60px}
- .menu-btn{display:block;position:fixed;top:12px;left:12px;z-index:20;border:1px solid var(--line);background:var(--card);color:var(--fg);border-radius:8px;padding:6px 12px;cursor:pointer}
- .theme{top:12px;right:12px}
+ .side.open~.scrim{display:block;position:fixed;inset:0;z-index:25;background:rgba(0,0,0,.35)}
+ .main{padding:0 16px 60px}
+ .topstick{margin:0 -16px 16px;padding:10px 16px 8px}
+ .menu-btn{display:block}
+ #sq{font-size:16px;padding-right:12px}
+ .hint{display:none}
 }
 </style></head><body>
-<button class="menu-btn" onclick="document.querySelector('.side').classList.toggle('open')">☰ 메뉴</button>
-<button class="theme" onclick="tglTheme()">🌗 테마</button>
 <div class="wrap">
 <nav class="side">
  <div class="brand"><span class="brand-eyebrow">ヴァイスシュヴァルツ</span>바이스슈발츠 룰 한글화<small>종합 룰 ver.1.113 · 팬 비공식 번역</small></div>
- <input id="q" placeholder="메뉴 검색…" oninput="filterNav(this.value)">
  <div id="nav"><a class="nav-link" data-target="home" href="#home">소개</a><div class="nav-group"><div class="nav-group-title">플로어 룰(대회 매너)</div><a class="nav-link" data-target="floor-basic" href="#floor-basic">기본 플로어 룰</a><a class="nav-link" data-target="floor-adv" href="#floor-adv">응용 플로어 룰</a></div><div class="nav-group"><div class="nav-group-title">종합 룰(룰북)</div><a class="nav-link" data-target="rb-00" href="#rb-00">종합 룰 개요</a><a class="nav-link" data-target="rb-01" href="#rb-01">1. 게임 개요</a><a class="nav-link" data-target="rb-02" href="#rb-02">2. 카드 정보</a><a class="nav-link" data-target="rb-03" href="#rb-03">3. 게임의 영역</a><a class="nav-link" data-target="rb-04" href="#rb-04">4. 기초 용어</a><a class="nav-link" data-target="rb-05" href="#rb-05">5. 게임의 준비</a><a class="nav-link" data-target="rb-06" href="#rb-06">6. 게임의 진행</a><a class="nav-link" data-target="rb-07" href="#rb-07">7. 어택과 배틀</a><a class="nav-link" data-target="rb-08" href="#rb-08">8. 플레이와 해결</a><a class="nav-link" data-target="rb-09" href="#rb-09">9. 룰 처리</a><a class="nav-link" data-target="rb-10" href="#rb-10">10. 키워드 능력</a><a class="nav-link" data-target="rb-11" href="#rb-11">11. 기타</a></div><div class="nav-group"><div class="nav-group-title">Q&A</div><a class="nav-link" data-target="qa" href="#qa">일반 룰</a><a class="nav-link" data-target="qa-cards" href="#qa-cards">카드 지정</a></div><div class="nav-group"><div class="nav-group-title">그 외 자료</div><a class="nav-link" data-target="errata" href="#errata">에라타 카드 리스트</a><a class="nav-link" data-target="deck" href="#deck">덱 구축 규칙</a><a class="nav-link" data-target="penalty" href="#penalty">페널티 이력</a></div><div class="nav-group"><div class="nav-group-title">참고</div><a class="nav-link" data-target="glossary" href="#glossary">용어 글로서리</a></div></div>
 </nav>
-<main class="main" id="main"><section id="home" class="doc"><h1>바이스슈발츠 룰 한글화</h1>
+<div class="scrim" onclick="toggleSide(false)"></div>
+<main class="main" id="main">
+<div class="topstick">
+ <div class="searchbar" role="search">
+  <button class="icon-btn menu-btn" onclick="toggleSide()" aria-label="메뉴 열기">☰</button>
+  <div class="sbox">
+   <input id="sq" type="search" placeholder="전체 문서에서 검색 (예: 앙코르, 트리거, 7.4)" autocomplete="off" spellcheck="false" aria-label="전체 문서 검색">
+   <kbd class="hint">/</kbd>
+   <div id="recent" class="recent-pop" hidden></div>
+  </div>
+  <button class="icon-btn" onclick="tglTheme()" aria-label="테마 전환">🌗</button>
+ </div>
+ <div id="hitbar" class="hitbar" hidden>
+  <button class="icon-btn" onclick="backToResults()">‹ 검색 결과</button>
+  <span id="hitpos"></span>
+  <button class="icon-btn" onclick="stepHit(-1)" aria-label="이전 일치">▲</button>
+  <button class="icon-btn" onclick="stepHit(1)" aria-label="다음 일치">▼</button>
+  <button class="icon-btn" onclick="closeHits()" aria-label="하이라이트 닫기">✕</button>
+ </div>
+</div>
+<section id="home" class="doc"><h1>바이스슈발츠 룰 한글화</h1>
 <p><a href="https://ws-tcg.com/rules/" target="_blank" rel="noopener">ws-tcg.com/rules</a> 의 일본판 자료(종합 룰·에라타·덱 구축 규칙·Q&A·플로어 룰·페널티)를 <strong>일본판 구성에 최대한 맞춰</strong> 한국어로 옮긴 팬 번역입니다.</p>
 <blockquote>팬 제작 <strong>비공식·비영리</strong> 참고 자료입니다. 룰·데이터 출처 ⓒ BushiRoad / <a href="https://ws-tcg.com/" target="_blank" rel="noopener">ws-tcg.com</a>.</blockquote>
 <table><thead><tr><th>자료</th><th>내용</th></tr></thead><tbody>
 <tr><td>종합 룰(룰북)</td><td>ver.1.113 · 11장 (673섹션)</td></tr>
-<tr><td>에라타</td><td>170항목</td></tr>
+<tr><td>에라타</td><td>172항목</td></tr>
 <tr><td>덱 구축 규칙</td><td>170작품 + 제한 리스트</td></tr>
 <tr><td>Q&amp;A(일반 룰)</td><td>97건</td></tr>
 <tr><td>플로어 룰</td><td>기본 + 응용(10部)</td></tr>
 <tr><td>페널티 이력</td><td>23건</td></tr>
 </tbody></table>
-<p>왼쪽 메뉴에서 문서를 선택하세요. 상단 검색으로 메뉴를 필터할 수 있습니다.</p>
+<p>왼쪽 메뉴에서 문서를 선택하세요. <strong>상단 검색창</strong>에 단어를 넣으면 모든 문서(종합 룰·Q&amp;A·플로어 룰·에라타 등)에서 찾아 목록으로 보여 줍니다. 키보드 <code>/</code> 로 바로 검색창에 들어갈 수 있습니다.</p>
 <hr>
-<p style="color:var(--muted);font-size:.92em"><strong>출처</strong> — 원문 룰/Q&amp;A 페이지: <a href="https://ws-tcg.com/rules/" target="_blank" rel="noopener">https://ws-tcg.com/rules/</a></p></section><section id="floor-basic" class="doc" hidden><h1>부시로드 TCG 기본 플로어 룰</h1>
+<p style="color:var(--muted);font-size:.92em"><strong>출처</strong> — 원문 룰/Q&amp;A 페이지: <a href="https://ws-tcg.com/rules/" target="_blank" rel="noopener">https://ws-tcg.com/rules/</a></p></section><section id="search" class="doc" hidden><div id="sres"></div></section><section id="floor-basic" class="doc" hidden><h1>부시로드 TCG 기본 플로어 룰</h1>
 <blockquote><strong>ver. 1.1.0</strong> — 최종 갱신일: 2024년 9월 17일 원문(일본판) 구성을 최대한 따른 한국어판. 용어 표기는 왼쪽 메뉴의 <strong>용어 글로서리</strong>를 따릅니다.</blockquote>
 <h2>들어가며</h2>
 <p>「플로어 룰」은 대회가 공평하고 올바르게 진행되기 위한 약속입니다. 이 「기본 플로어 룰」에서는 그중에서도 특히 중요한 내용에 대해 설명합니다. 파이터를 비롯한 모든 참가자 여러분은, 모두가 만족할 수 있는 대회가 되도록 이 내용을 잘 확인합시다!</p>
@@ -5245,10 +5308,34 @@ summary{cursor:pointer;font-weight:600}
 <p><strong>A.</strong> 아니요, 이름이 같은 카드의 경우 합쳐서 4장까지만 넣을 수 있습니다. 또한 효과 등으로 카드명을 참조하는 경우, 텍스트 등의 정보가 다르더라도 카드명이 일치하면 조건을 충족합니다. 덱 구축에 관한 자세한 내용은 공식 홈페이지의 「덱 구축 룰」(http://ws-tcg.com/rules/deck_rule.html)을 확인해 주세요.</p></div></section>
 <section id="errata" class="doc" hidden><h1>바이스슈발츠 에라타 (카드 정정)</h1>
 <blockquote>카드 이미지 등 자세한 내용은 <strong><a href="https://ws-tcg.com/rules/errata/" target="_blank" rel="noopener">여기(공식 에라타 페이지)</a></strong> 에서 확인하세요.</blockquote>
+<h2>2026년 11월도 CX 챌린지 「anemoi」 배포 PR 카드</h2>
+<ul>
+<li><strong>카드 No.</strong>: ANM/W138-P07S</li>
+<li><strong>카드 명칭</strong>: “바람의 회랑으로” 스피카 (“風の回廊へ”朱比華)</li>
+<li><strong>카드 No.</strong>: ANM/W138-P07EX</li>
+<li><strong>카드 명칭</strong>: “바람의 회랑으로” 스피카 (“風の回廊へ”朱比華)</li>
+<li><strong>▼수정 내용</strong>: 카드 No.: ANM/W138-P02S, ANM/W138-P02EX ↓ 카드 No.: ANM/W138-P07S, ANM/W138-P07EX</li>
+<li><strong>▼수정 이유</strong>: 카드 No. 오기로 인해, 수정하였습니다.</li>
+<li><strong>▼카드 교환에 관하여</strong>: 본 에라타에 관하여, 카드 교환 대응은 실시하지 않습니다.</li>
+<li><strong>교환 기간</strong>: 교환 실시 없음</li>
+</ul>
+<h2>2026년 11월~12월도 숍 대회 배포 anemoi PR 카드</h2>
+<ul>
+<li><strong>카드 No.</strong>: ANM/W138-P06</li>
+<li><strong>카드 명칭</strong>: “바람이 잇는 기적” 스피카 (“風がつなぐ奇跡”朱比華)</li>
+<li><strong>카드 No.</strong>: ANM/W138-P06S</li>
+<li><strong>카드 명칭</strong>: “바람이 잇는 기적” 스피카 (“風がつなぐ奇跡”朱比華)</li>
+<li><strong>카드 No.</strong>: ANM/W138-P06EX</li>
+<li><strong>카드 명칭</strong>: “바람이 잇는 기적” 스피카 (“風がつなぐ奇跡”朱比華)</li>
+<li><strong>▼수정 내용</strong>: 카드 No.: ANM/W138-P01, ANM/W138-P01S, ANM/W138-P01EX ↓ 카드 No.: ANM/W138-P06, ANM/W138-P06S, ANM/W138-P06EX</li>
+<li><strong>▼수정 이유</strong>: 카드 No. 오기로 인해, 수정하였습니다.</li>
+<li><strong>▼카드 교환에 관하여</strong>: 본 에라타에 관하여, 카드 교환 대응은 실시하지 않습니다.</li>
+<li><strong>교환 기간</strong>: 교환 실시 없음</li>
+</ul>
 <h2>2026.10.30 발매 부스터 팩 걸즈 앤 판처</h2>
 <ul>
 <li><strong>카드 No.</strong>: GUP/W141-062S</li>
-<li><strong>카드 명칭</strong>: “거북 팀 (“カメさんチーム)</li>
+<li><strong>카드 명칭</strong>: 거북 팀 (カメさんチーム)</li>
 <li><strong>▼수정 내용</strong>: 일러스트를 본래의 디자인으로 수정하였습니다.</li>
 <li><strong>▼수정 이유</strong>: 카드 일러스트 속 전차의 디자인에 오류가 있어, 수정하였습니다.</li>
 <li><strong>▼카드 교환에 관하여</strong>: 이 에라타 카드에 관해서는, 교환 대응을 실시합니다.</li>
@@ -5291,8 +5378,8 @@ summary{cursor:pointer;font-weight:600}
 <ul>
 <li><strong>카드 No.</strong>: TAL/S126-P03S</li>
 <li><strong>카드 명칭</strong>: 선혈의 애쉬 (鮮血のアッシュ)</li>
-<li><strong>카드 No.</strong>: TAL/S126-003S</li>
-<li><strong>카드 명칭</strong>: 형을 생각하는 휴버트 오즈웰</li>
+<li><strong>▼수정 내용</strong>: 카드 No.: TAL/S126-003S ↓ 카드 No.: TAL/S126-P03S</li>
+<li><strong>▼수정 이유</strong>: 카드 No. 오기로 인해, 수정하였습니다.</li>
 <li><strong>▼카드 교환에 관하여</strong>: 본 에라타에 관하여, 교환 대응을 실시합니다.</li>
 <li><strong>교환 기간</strong>: 2026년 6월 15일(월) ~ 2028년 6월 19일(월)</li>
 </ul>
@@ -5405,7 +5492,8 @@ summary{cursor:pointer;font-weight:600}
 <li><strong>카드 명칭</strong>: 잔나 교회의 승병 아리아 에크버그 (ジャンナ教会の僧兵 アーリア・エクバーグ)</li>
 <li><strong>카드 No.</strong>: TAL/S126-072S</li>
 <li><strong>카드 명칭</strong>: 잔나 교회의 승병 아리아 에크버그 (ジャンナ教会の僧兵 アーリア・エクバーグ)</li>
-<li><strong>▼수정 내용</strong>: ジャンナ協会の僧兵 アーリア・エクバーグ ↓ ジャンナ教会の僧兵 アーリア・エクバーグ</li>
+<li><strong>▼수정 내용</strong>: 카드 명칭: ジャンナ協会の僧兵 アーリア・エクバーグ ↓ 카드 명칭: ジャンナ教会の僧兵 アーリア・エクバーグ</li>
+<li><strong>▼수정 이유</strong>: 카드 명칭 오기로 인해, 수정하였습니다.</li>
 <li><strong>▼카드 교환에 관하여</strong>: 본 에라타에 관하여, 교환 대응을 실시합니다.</li>
 <li><strong>교환 기간</strong>: 2026년 6월 1일(월) ~ 2028년 6월 1일(목)</li>
 </ul>
@@ -5486,10 +5574,8 @@ summary{cursor:pointer;font-weight:600}
 <li><strong>카드 명칭</strong>: Celebr@tion! 하나미 사키 (Celebr@tion! 花海咲季)</li>
 <li><strong>카드 No.</strong>: GIM/W124-P19S</li>
 <li><strong>카드 명칭</strong>: Celebr@tion! 하나미 사키 (Celebr@tion! 花海咲季)</li>
-<li><strong>카드 No.</strong>: GIM/W124-P07</li>
-<li><strong>카드 명칭</strong>: Fighting My Way 하나미 사키</li>
-<li><strong>카드 No.</strong>: GIM/W124-P07S</li>
-<li><strong>카드 명칭</strong>: Fighting My Way 하나미 사키</li>
+<li><strong>▼수정 내용</strong>: 카드 No.: GIM/W124-P07 ↓ 카드 No.: GIM/W124-P19 / 카드 No.: GIM/W124-P07S ↓ 카드 No.: GIM/W124-P19S</li>
+<li><strong>▼수정 이유</strong>: 카드 No. 오기로 인해, 수정하였습니다.</li>
 <li><strong>▼카드 교환에 관하여</strong>: 본 에라타에 관하여, 카드 교환 대응은 실시하지 않습니다.</li>
 <li><strong>교환 기간</strong>: 교환 실시 없음</li>
 </ul>
@@ -5519,7 +5605,8 @@ summary{cursor:pointer;font-weight:600}
 <li><strong>카드 명칭</strong>: 재회한, 옛 절친 하루키 (再会した、かつての親友 春希)</li>
 <li><strong>카드 No.</strong>: Stm/W123-114S</li>
 <li><strong>카드 명칭</strong>: 재회한, 옛 절친 하루키 (再会した、かつての親友 春希)</li>
-<li><strong>▼수정 내용</strong>: 再開した、かつての親友 春希 ↓ 再会した、かつての親友 春希</li>
+<li><strong>▼수정 내용</strong>: 카드 명칭: 再開した、かつての親友 春希 ↓ 카드 명칭: 再会した、かつての親友 春希</li>
+<li><strong>▼수정 이유</strong>: 카드 명칭 오기로 인해, 수정하였습니다.</li>
 <li><strong>▼카드 교환에 관하여</strong>: 본 에라타에 관하여, 교환 대응을 실시합니다.</li>
 <li><strong>교환 기간</strong>: 2025년 5월 20일(화) ~ 2027년 5월 20일(목)</li>
 </ul>
@@ -5529,7 +5616,8 @@ summary{cursor:pointer;font-weight:600}
 <li><strong>카드 명칭</strong>: 현자 솔론 (賢者ソロン)</li>
 <li><strong>카드 No.</strong>: Sdy/W123-049S</li>
 <li><strong>카드 명칭</strong>: 현자 솔론 (賢者ソロン)</li>
-<li><strong>▼수정 내용</strong>: 賢者カロン ↓ 賢者ソロン</li>
+<li><strong>▼수정 내용</strong>: 카드 명칭: 賢者カロン ↓ 카드 명칭: 賢者ソロン</li>
+<li><strong>▼수정 이유</strong>: 카드 명칭 오기로 인해, 수정하였습니다.</li>
 <li><strong>▼카드 교환에 관하여</strong>: 본 에라타에 관하여, 교환 대응을 실시합니다.</li>
 <li><strong>교환 기간</strong>: 2025년 5월 20일(화) ~ 2027년 5월 20일(목)</li>
 </ul>
@@ -5574,7 +5662,8 @@ summary{cursor:pointer;font-weight:600}
 <li><strong>카드 명칭</strong>: 현요야행 오토무네 코즈에 (眩耀夜行 乙宗 梢)</li>
 <li><strong>카드 No.</strong>: LHS/W122-095S</li>
 <li><strong>카드 명칭</strong>: 현요야행 오토무네 코즈에 (眩耀夜行 乙宗 梢)</li>
-<li><strong>▼수정 내용</strong>: 眩輝夜行 乙宗 梢 ↓ 眩耀夜行 乙宗 梢</li>
+<li><strong>▼수정 내용</strong>: 카드 명칭: 眩輝夜行 乙宗 梢 ↓ 카드 명칭: 眩耀夜行 乙宗 梢</li>
+<li><strong>▼수정 이유</strong>: 카드 명칭 오기로 인해, 수정하였습니다.</li>
 <li><strong>▼카드 교환에 관하여</strong>: 본 에라타에 관하여, 교환 대응을 실시합니다.</li>
 <li><strong>교환 기간</strong>: 2025년 5월 20일(화) ~ 2027년 5월 20일(목)</li>
 </ul>
@@ -5606,6 +5695,9 @@ summary{cursor:pointer;font-weight:600}
 <ul>
 <li><strong>카드 No.</strong>: NIK/S117-010SP</li>
 <li><strong>카드 명칭</strong>: 작전 수행 라피 (作戦遂行 ラピ)</li>
+<li><strong>▼수정 내용</strong>: ・트리거 아이콘: [트리거 없음] (효과 없음) ↓ ・트리거 아이콘: [소울 아이콘] (소울 +1) / ・소울: 1 ↓ ・소울: 2</li>
+<li><strong>▼수정 이유</strong>: 트리거 아이콘, 소울 오기로 인해, 수정하였습니다.</li>
+<li><strong>▼카드 교환에 관하여</strong>: 이 에라타 카드에 관해서는, 교환 대응을 실시합니다.</li>
 <li><strong>교환 상세</strong>: 【2024/12/16 추가】 우편 교환 개시일: 2024년 12월 13일(금) ~ 2026년 12월 13일(수) TCG 스테이션 교환 개시일: 2024년 12월 13일(금) ~ 2024년 12월 31일(화)</li>
 <li><strong>교환 기간</strong>: 2024년 12월 13일(금) ~ 2026년 12월 13일(일)</li>
 </ul>
@@ -5613,6 +5705,9 @@ summary{cursor:pointer;font-weight:600}
 <ul>
 <li><strong>카드 No.</strong>: NIK/S117-022S</li>
 <li><strong>카드 명칭</strong>: 빛나는 액세서리 나가 (光るアクセサリー ナガ)</li>
+<li><strong>▼수정 내용</strong>: 카드의 홀로 가공 범위를 수정하였습니다.</li>
+<li><strong>▼수정 이유</strong>: 홀로 가공이 캐릭터의 오른쪽 다리 부분까지 들어가 있어, 수정하였습니다.</li>
+<li><strong>▼카드 교환에 관하여</strong>: 이 에라타 카드에 관해서는, 교환 대응을 실시합니다.</li>
 <li><strong>교환 상세</strong>: 【2024/12/16 추가】 우편 교환 개시일: 2024년 12월 13일(금) ~ 2026년 12월 13일(수) TCG 스테이션 교환 개시일: 2024년 12월 13일(금) ~ 2024년 12월 31일(화)</li>
 <li><strong>교환 기간</strong>: 2024년 12월 13일(금) ~ 2026년 12월 13일(일)</li>
 </ul>
@@ -5621,6 +5716,7 @@ summary{cursor:pointer;font-weight:600}
 <li><strong>카드 No.</strong>: RZ/S116-058</li>
 <li><strong>카드 명칭</strong>: 핼러윈 캣 람 (ハロウィンキャット ラム)</li>
 <li><strong>▼수정 내용</strong>: RZ/S116-058U ↓ RZ/S116-058 U</li>
+<li><strong>▼수정 이유</strong>: 카드 No.와 레어도 오기로 인해, 수정하였습니다.</li>
 <li><strong>▼카드 교환에 관하여</strong>: 본 에라타에 관하여, 카드 교환 대응은 실시하지 않습니다.</li>
 <li><strong>교환 기간</strong>: 교환 실시 없음</li>
 </ul>
@@ -5718,16 +5814,17 @@ summary{cursor:pointer;font-weight:600}
 <ul>
 <li><strong>카드 No.</strong>: ISC/S110-111</li>
 <li><strong>카드 명칭</strong>: 바다와 태양의 프로메사 시라세 사쿠야 (海と太陽のプロメッサ 白瀬咲耶)</li>
-<li><strong>카드 No.</strong>: ISC/S111-111</li>
+<li><strong>▼수정 내용</strong>: 카드 No.: ISC/S111-111 ↓ 카드 No.: ISC/S110-111</li>
+<li><strong>▼수정 이유</strong>: 카드 No. 오기로 인해, 수정하였습니다.</li>
 <li><strong>▼카드 교환에 관하여</strong>: 본 에라타에 관하여, 카드 교환 대응은 실시하지 않습니다.</li>
 <li><strong>교환 기간</strong>: 교환 실시 없음</li>
 </ul>
 <h2>2023.9.8 발매 월간 부시로드 10월호 부록 PR 카드</h2>
 <ul>
 <li><strong>카드 No.</strong>: BD/WE42-P25</li>
-<li><strong>카드 명칭</strong>: “Winter Fashion” 토야마 카스미 (“新たな幕開け”戸山香澄)</li>
-<li><strong>카드 No.</strong>: BD/WE42-P25</li>
-<li><strong>카드 명칭</strong>: “Winter Fashion” 토야마 카스미</li>
+<li><strong>카드 명칭</strong>: “새로운 서막” 토야마 카스미 (“新たな幕開け”戸山香澄)</li>
+<li><strong>▼수정 내용</strong>: 카드 No.: BD/WE42-P25 ↓ 카드 No.: BD/WE42-P69</li>
+<li><strong>▼수정 이유</strong>: 카드 No. 오기로 인해, 수정하였습니다.</li>
 <li><strong>▼카드 교환에 관하여</strong>: 본 에라타에 관하여, 카드 교환 대응은 실시하지 않습니다.</li>
 <li><strong>교환 기간</strong>: 교환 실시 없음</li>
 </ul>
@@ -5757,7 +5854,8 @@ summary{cursor:pointer;font-weight:600}
 <li><strong>카드 명칭</strong>: 홀리 시프트웰 (ホリー・シフトウェル)</li>
 <li><strong>카드 No.</strong>: PXR/S94-T58S</li>
 <li><strong>카드 명칭</strong>: 홀리 시프트웰 (ホリー・シフトウェル)</li>
-<li><strong>▼수정 내용</strong>: ホーリー・シフトウェル ↓ ホリー・シフトウェル</li>
+<li><strong>▼수정 내용</strong>: 카드 명칭: ホーリー・シフトウェル ↓ 카드 명칭: ホリー・シフトウェル</li>
+<li><strong>▼수정 이유</strong>: 카드 명칭 오기로 인해, 수정하였습니다.</li>
 <li><strong>▼카드 교환에 관하여</strong>: 본 에라타에 관하여, 교환 대응은 실시하지 않습니다.</li>
 <li><strong>교환 기간</strong>: 교환 실시 없음</li>
 </ul>
@@ -5765,7 +5863,8 @@ summary{cursor:pointer;font-weight:600}
 <ul>
 <li><strong>카드 No.</strong>: KF/S05-T02</li>
 <li><strong>카드 명칭</strong>: 정화하는 자 쿄 (祓う者 京)</li>
-<li><strong>▼수정 내용</strong>: 払う者 京 ↓ 祓う者 京</li>
+<li><strong>▼수정 내용</strong>: 카드 명칭: 払う者 京 ↓ 카드 명칭: 祓う者 京</li>
+<li><strong>▼수정 이유</strong>: 카드 명칭 오기로 인해, 수정하였습니다. (2023/9/8 갱신) 카드 명칭의 한자 표기 갱신에 따라, 수정하였습니다.</li>
 <li><strong>▼카드 교환에 관하여</strong>: 본 에라타에 관하여, 카드 교환 대응은 실시하지 않습니다.</li>
 <li><strong>교환 기간</strong>: 교환 실시 없음</li>
 </ul>
@@ -5773,7 +5872,8 @@ summary{cursor:pointer;font-weight:600}
 <ul>
 <li><strong>카드 No.</strong>: KF/S05-008</li>
 <li><strong>카드 명칭</strong>: 정화하는 자 쿄 (祓う者 京)</li>
-<li><strong>▼수정 내용</strong>: 払う者 京 ↓ 祓う者 京</li>
+<li><strong>▼수정 내용</strong>: 카드 명칭: 払う者 京 ↓ 카드 명칭: 祓う者 京</li>
+<li><strong>▼수정 이유</strong>: 카드 명칭 오기로 인해, 수정하였습니다. (2023/9/8 갱신) 카드 명칭의 한자 표기 갱신에 따라, 수정하였습니다.</li>
 <li><strong>▼카드 교환에 관하여</strong>: 본 에라타에 관하여, 카드 교환 대응은 실시하지 않습니다.</li>
 <li><strong>교환 기간</strong>: 교환 실시 없음</li>
 </ul>
@@ -5783,11 +5883,15 @@ summary{cursor:pointer;font-weight:600}
 <li><strong>카드 명칭</strong>: 바다 사당의 짐승 공주 루카&미츠키 (海祠の獣姫・ルカ＆ミツキ)</li>
 <li><strong>카드 No.</strong>: PAD/S105-058S</li>
 <li><strong>카드 명칭</strong>: 바다 사당의 짐승 공주 루카&미츠키 (海祠の獣姫・ルカ＆ミツキ)</li>
-<li><strong>카드 No.</strong>: PAD/S105-075</li>
-<li><strong>카드 명칭</strong>: 작나화의 여제 에키드나 -SARA-</li>
-<li><strong>카드 No.</strong>: PAD/S105-075R</li>
-<li><strong>카드 명칭</strong>: 작나화의 여제 에키드나 -SARA-</li>
 <li><strong>▼수정 내용</strong>: 당신의 클라이맥스 존의 「灼那華の炎帝・エキドナ -SARA-」을 1장 대기실에 놓는다 ↓ 당신의 클라이맥스 존의 「灼那華の女帝・エキドナ -SARA-」을 1장 대기실에 놓는다</li>
+<li><strong>▼수정 이유</strong>: 텍스트 내 카드 명칭 오기로 인해, 수정하였습니다.</li>
+<li><strong>▼카드 교환에 관하여</strong>: 본 에라타에 관하여, 교환 대응을 실시합니다.</li>
+<li><strong>카드 No.</strong>: PAD/S105-075</li>
+<li><strong>카드 명칭</strong>: 작나화의 여제 에키드나 -SARA- (灼那華の女帝・エキドナ -SARA-)</li>
+<li><strong>카드 No.</strong>: PAD/S105-075R</li>
+<li><strong>카드 명칭</strong>: 작나화의 여제 에키드나 -SARA- (灼那華の女帝・エキドナ -SARA-)</li>
+<li><strong>▼수정 내용</strong>: 카드 명칭: 灼那華の炎帝・エキドナ -SARA- ↓ 카드 명칭: 灼那華の女帝・エキドナ -SARA-</li>
+<li><strong>▼수정 이유</strong>: 카드 명칭 오기로 인해, 수정하였습니다.</li>
 <li><strong>▼카드 교환에 관하여</strong>: 본 에라타에 관하여, 교환 대응을 실시합니다.</li>
 <li><strong>교환 기간</strong>: 교환 종료</li>
 </ul>
@@ -5848,7 +5952,8 @@ summary{cursor:pointer;font-weight:600}
 <ul>
 <li><strong>카드 No.</strong>: SW/S49-028</li>
 <li><strong>카드 명칭</strong>: Dejarik Holochess (Dejarik Holochess)</li>
-<li><strong>▼수정 내용</strong>: Dajarik Holochess ↓ Dejarik Holochess</li>
+<li><strong>▼수정 내용</strong>: 카드 명칭: Dajarik Holochess ↓ 카드 명칭: Dejarik Holochess</li>
+<li><strong>▼수정 이유</strong>: 카드 명칭 오기로 인해, 수정하였습니다.</li>
 <li><strong>▼카드 교환에 관하여</strong>: 본 에라타에 관하여, 교환 대응은 실시하지 않습니다.</li>
 <li><strong>교환 기간</strong>: 교환 실시 없음</li>
 </ul>
@@ -5891,7 +5996,8 @@ summary{cursor:pointer;font-weight:600}
 <ul>
 <li><strong>카드 No.</strong>: SG/W89-005</li>
 <li><strong>카드 명칭</strong>: 자동인형 레이아 (自動人形 レイア)</li>
-<li><strong>▼수정 내용</strong>: オートスコアラー レイア ↓ 自動人形 レイア 【자동】이 카드와 같은 카드명의 카드와, 「自動人形 レイア」는, 덱에 합계 4장까지 넣을 수 있다.모든 영역에 있는 이 카드의 카드명은 「自動人形 レイア」로서도 취급한다.【자동】［패를 1장 대기실에 놓는다］ 이 카드가 패에서 무대에 놓였을 때, 당신은 코스트를 지불해도 된다.그렇게 했다면, 당신은 자신의 대기실의 레벨 0 이하의「自動人形 ファラ」을 1장 고르고, 무대의 원하는 칸에 놓고, 다음 상대 턴이 끝날 때까지, 이 카드의 레벨을 +1.【자동】［(1) 당신의 덱 위에서 1장을 클록 존에 놓고, 이 카드를 추억으로 한다］ 배틀 중인 이 카드가【리버스】했을 때, 당신은 코스트를 지불해도 된다.그렇게 했다면, 당신은 자신의 대기실의 《錬金術》의 캐릭터를 1장 고르고, 패로 되돌린다. ↓ 【자동】［패를 1장 대기실에 놓는다］ 이 카드가 패에서 무대에 놓였을 때, 당신은 코스트를 지불해도 된다.그렇게 했다면, 당신은 자신의 대기실의 레벨 0 이하의「自動人形 ファラ」을 1장 고르고, 무대의 원하는 칸에 놓고, 다음 상대 턴이 끝날 때까지, 이 카드의 레벨을 +1.【자동】［(1) 당신의 덱 위에서 1장을 클록 존에 놓고, 이 카드를 추억으로 한다］ 배틀 중인 이 카드가【리버스】했을 때, 당신은 코스트를 지불해도 된다.그렇게 했다면, 당신은 자신의 대기실의 《錬金術》의 캐릭터를 1장 고르고, 패로 되돌린다.</li>
+<li><strong>▼수정 내용</strong>: 카드 명칭: オートスコアラー レイア ↓ 카드 명칭: 自動人形 レイア / 【자동】이 카드와 같은 카드명의 카드와, 「自動人形 レイア」는, 덱에 합계 4장까지 넣을 수 있다.모든 영역에 있는 이 카드의 카드명은 「自動人形 レイア」로서도 취급한다.【자동】［패를 1장 대기실에 놓는다］ 이 카드가 패에서 무대에 놓였을 때, 당신은 코스트를 지불해도 된다.그렇게 했다면, 당신은 자신의 대기실의 레벨 0 이하의「自動人形 ファラ」을 1장 고르고, 무대의 원하는 칸에 놓고, 다음 상대 턴이 끝날 때까지, 이 카드의 레벨을 +1.【자동】［(1) 당신의 덱 위에서 1장을 클록 존에 놓고, 이 카드를 추억으로 한다］ 배틀 중인 이 카드가【리버스】했을 때, 당신은 코스트를 지불해도 된다.그렇게 했다면, 당신은 자신의 대기실의 《錬金術》의 캐릭터를 1장 고르고, 패로 되돌린다. ↓ 【자동】［패를 1장 대기실에 놓는다］ 이 카드가 패에서 무대에 놓였을 때, 당신은 코스트를 지불해도 된다.그렇게 했다면, 당신은 자신의 대기실의 레벨 0 이하의「自動人形 ファラ」을 1장 고르고, 무대의 원하는 칸에 놓고, 다음 상대 턴이 끝날 때까지, 이 카드의 레벨을 +1.【자동】［(1) 당신의 덱 위에서 1장을 클록 존에 놓고, 이 카드를 추억으로 한다］ 배틀 중인 이 카드가【리버스】했을 때, 당신은 코스트를 지불해도 된다.그렇게 했다면, 당신은 자신의 대기실의 《錬金術》의 캐릭터를 1장 고르고, 패로 되돌린다.</li>
+<li><strong>▼수정 이유</strong>: 카드 명칭, 카드 텍스트 오기로 인해, 수정하였습니다.</li>
 <li><strong>▼카드 교환에 관하여</strong>: 본 에라타에 관하여, 교환 대응을 실시합니다.</li>
 <li><strong>교환 기간</strong>: 교환 종료</li>
 </ul>
@@ -5912,9 +6018,8 @@ summary{cursor:pointer;font-weight:600}
 <li><strong>카드 명칭</strong>: 베어야 할 것은 악 (斬るべきは悪)</li>
 <li><strong>카드 No.</strong>: SAO/S80-055R</li>
 <li><strong>카드 명칭</strong>: 시천검·이참 (時穿剣・裏斬)</li>
-<li><strong>카드 No.</strong>: SAO/S84-029R</li>
-<li><strong>카드 No.</strong>: SAO/S84-054R</li>
-<li><strong>카드 No.</strong>: SAO/S84-055R</li>
+<li><strong>▼수정 내용</strong>: 카드 No.: SAO/S84-029R ↓ 카드 No.: SAO/S80-029R / 카드 No.: SAO/S84-054R ↓ 카드 No.: SAO/S80-054R / 카드 No.: SAO/S84-055R ↓ 카드 No.: SAO/S80-055R</li>
+<li><strong>▼수정 이유</strong>: 카드 No. 오기로 인해, 수정하였습니다.</li>
 <li><strong>▼카드 교환에 관하여</strong>: 본 에라타에 관하여, 카드 교환 대응은 실시하지 않습니다.</li>
 <li><strong>교환 기간</strong>: 교환 실시 없음</li>
 </ul>
@@ -5931,7 +6036,8 @@ summary{cursor:pointer;font-weight:600}
 <ul>
 <li><strong>카드 No.</strong>: SMP/W82-097</li>
 <li><strong>카드 명칭</strong>: “브레이크 타임” 텐젠 (“ブレークタイム”天善)</li>
-<li><strong>▼수정 내용</strong>: “ブレークタイム”天膳 ↓ “ブレークタイム”天善</li>
+<li><strong>▼수정 내용</strong>: 카드 명칭: “ブレークタイム”天膳 ↓ 카드 명칭: “ブレークタイム”天善</li>
+<li><strong>▼수정 이유</strong>: 카드 명칭 오기로 인해, 수정하였습니다.</li>
 <li><strong>▼카드 교환에 관하여</strong>: 본 에라타에 관하여, 교환 대응을 실시합니다.</li>
 <li><strong>교환 기간</strong>: 교환 종료</li>
 </ul>
@@ -5939,6 +6045,8 @@ summary{cursor:pointer;font-weight:600}
 <ul>
 <li><strong>카드 No.</strong>: FGO/S75-P01</li>
 <li><strong>카드 명칭</strong>: 현왕의 비책 길가메시 (賢王の秘策 ギルガメッシュ)</li>
+<li><strong>▼수정 내용</strong>: 카드 No.: FGO/S75-P01 ↓ 카드 No.: FGO/S75-P04</li>
+<li><strong>▼수정 이유</strong>: 카드 No. 오기로 인해, 수정하였습니다.</li>
 <li><strong>▼카드 교환에 관하여</strong>: 본 에라타에 관하여, 카드 교환 대응은 실시하지 않습니다.</li>
 <li><strong>교환 기간</strong>: 교환 실시 없음</li>
 </ul>
@@ -5955,6 +6063,8 @@ summary{cursor:pointer;font-weight:600}
 <ul>
 <li><strong>카드 No.</strong>: Fsi/W65-051、Fsi/W65-051FBR</li>
 <li><strong>카드 명칭</strong>: 헤키요 학원 학생회 서기 치즈루 (碧陽学園生徒会書紀 知弦)</li>
+<li><strong>▼수정 내용</strong>: 카드 명칭: 碧陽学園生徒会書紀 知弦 ↓ 카드 명칭: 碧陽学園生徒会書記 知弦</li>
+<li><strong>▼수정 이유</strong>: 카드 명칭 오기로 인해, 수정하였습니다.</li>
 <li><strong>▼카드 교환에 관하여</strong>: 본 에라타에 관하여, 교환 대응을 실시합니다.</li>
 <li><strong>교환 기간</strong>: 교환 종료</li>
 </ul>
@@ -5963,6 +6073,7 @@ summary{cursor:pointer;font-weight:600}
 <li><strong>카드 No.</strong>: Fsi/W65-045、Fsi/W65-045S</li>
 <li><strong>카드 명칭</strong>: 헤키요 학원 학생회장 쿠리무 (碧陽学園生徒会長 くりむ)</li>
 <li><strong>▼수정 내용</strong>: 「碧陽学園生徒会書紀 知弦」나 「百合の香り 知弦」을 1장 고르고 ↓ 「碧陽学園生徒会書記 知弦」나 「百合の香り 知弦」을 1장 고르고</li>
+<li><strong>▼수정 이유</strong>: 참조 대상 카드 명칭 오기로 인해, 텍스트를 수정하였습니다.</li>
 <li><strong>▼카드 교환에 관하여</strong>: 본 에라타에 관하여, 교환 대응을 실시합니다.</li>
 <li><strong>교환 기간</strong>: 교환 종료</li>
 </ul>
@@ -5970,7 +6081,8 @@ summary{cursor:pointer;font-weight:600}
 <ul>
 <li><strong>카드 No.</strong>: Far/W65-112</li>
 <li><strong>카드 명칭</strong>: 제법 싫지만은 않은 이야기 루미아＆리엘 (まんざらでもない話 ルミア＆リィエル)</li>
-<li><strong>카드 No.</strong>: Far/W65-112</li>
+<li><strong>▼수정 내용</strong>: 카드 No.: Far/W65-112 ↓ 카드 No.: Fra/W65-112</li>
+<li><strong>▼수정 이유</strong>: 카드 No. 오기로 인해, 수정하였습니다.</li>
 <li><strong>▼카드 교환에 관하여</strong>: 본 에라타에 관하여, 카드 교환 대응은 실시하지 않습니다.</li>
 <li><strong>교환 기간</strong>: 교환 실시 없음</li>
 </ul>
@@ -5978,6 +6090,9 @@ summary{cursor:pointer;font-weight:600}
 <ul>
 <li><strong>카드 No.</strong>: BD/W63-091</li>
 <li><strong>카드 명칭</strong>: “여름의 소프트아이스크림” 히카와 사요 (“夏のソフトクリーム”氷川紗夜)</li>
+<li><strong>▼수정 내용</strong>: 카드 명칭: “夏のソフトクリーム”氷川沙夜 ↓ 카드 명칭: “夏のソフトクリーム”氷川紗夜</li>
+<li><strong>▼수정 이유</strong>: 카드 명칭 오기로 인해, 수정하였습니다.</li>
+<li><strong>▼카드 교환에 관하여</strong>: 본 에라타에 관하여, 교환 대응을 실시합니다.</li>
 <li><strong>교환 기간</strong>: 교환 종료</li>
 </ul>
 <h2>2019.2.15 발매 「오버로드」</h2>
@@ -6136,7 +6251,8 @@ summary{cursor:pointer;font-weight:600}
 <ul>
 <li><strong>카드 No.</strong>: KS/W55-070</li>
 <li><strong>카드 명칭</strong>: “이의 있습니다!” 메구밍 (“異議あり！”めぐみん)</li>
-<li><strong>▼수정 내용</strong>: “意義あり！”めぐみん ↓ “異議あり！”めぐみん</li>
+<li><strong>▼수정 내용</strong>: 카드 명칭: “意義あり！”めぐみん ↓ 카드 명칭: “異議あり！”めぐみん</li>
+<li><strong>▼수정 이유</strong>: 카드 명칭 오기로 인해, 수정하였습니다.</li>
 <li><strong>▼카드 교환에 관하여</strong>: 본 에라타에 관하여, 카드 교환 대응은 실시하지 않습니다.</li>
 <li><strong>교환 기간</strong>: 교환 실시 없음</li>
 </ul>
@@ -6261,7 +6377,8 @@ summary{cursor:pointer;font-weight:600}
 <ul>
 <li><strong>카드 No.</strong>: SG/W39-100</li>
 <li><strong>카드 명칭</strong>: 풍륜화참 월황 (風輪火斬 月煌)</li>
-<li><strong>▼수정 내용</strong>: 風林火斬 月煌 ↓ 風輪火斬 月煌</li>
+<li><strong>▼수정 내용</strong>: 카드 명칭: 風林火斬 月煌 ↓ 카드 명칭: 風輪火斬 月煌</li>
+<li><strong>▼수정 이유</strong>: 카드 명칭 오기로 인해, 수정하였습니다.</li>
 <li><strong>▼카드 교환에 관하여</strong>: 이 에라타 카드에 관해서는, 교환 대응은 하지 않습니다.</li>
 <li><strong>교환 기간</strong>: 교환 실시 없음</li>
 </ul>
@@ -6323,7 +6440,8 @@ summary{cursor:pointer;font-weight:600}
 <ul>
 <li><strong>카드 No.</strong>: TF/S32-060</li>
 <li><strong>카드 명칭</strong>: “출진”히자마루 아카리 (“出陣”膝丸 燈)</li>
-<li><strong>▼수정 내용</strong>: “出陣”膝丸 橙 ↓ “出陣”膝丸 燈</li>
+<li><strong>▼수정 내용</strong>: 카드 명칭: “出陣”膝丸 橙 ↓ 카드 명칭: “出陣”膝丸 燈</li>
+<li><strong>▼수정 이유</strong>: 카드 명칭 오기로 인해, 수정하였습니다.</li>
 <li><strong>▼카드 교환에 관하여</strong>: 이 에라타 카드에 관해서는, 교환 대응을 실시합니다.</li>
 <li><strong>교환 기간</strong>: 교환 종료</li>
 </ul>
@@ -6331,8 +6449,8 @@ summary{cursor:pointer;font-weight:600}
 <ul>
 <li><strong>카드 No.</strong>: NK/W30-P11</li>
 <li><strong>카드 명칭</strong>: 달콤한 한때 마리카 (甘いひととき 万里花)</li>
-<li><strong>카드 No.</strong>: NK/W30-P11</li>
-<li><strong>카드 명칭</strong>: 달콤한 한때 마리카</li>
+<li><strong>▼수정 내용</strong>: 카드 No.: NK/W30-P11 ↓ 카드 No.: NK/W30-P12</li>
+<li><strong>▼수정 이유</strong>: 카드 No. 오기로 인해, 수정하였습니다.</li>
 <li><strong>▼카드 교환에 관하여</strong>: 이 에라타 카드에 관해서는, 게임 진행상 치명적인 문제는 발생하지 않으므로, 교환 대응은 하지 않습니다.</li>
 <li><strong>교환 기간</strong>: 교환 실시 없음</li>
 </ul>
@@ -6394,7 +6512,8 @@ summary{cursor:pointer;font-weight:600}
 <ul>
 <li><strong>카드 No.</strong>: LB/W24-P04</li>
 <li><strong>카드 명칭</strong>: “고양이와 햇볕 쬐기” 린 (“猫とひなたぼっこ”鈴)</li>
-<li><strong>카드 No.</strong>: LB/W24-P04</li>
+<li><strong>▼수정 내용</strong>: 카드 No.: LB/W24-P04 ↓ 카드 No.: LB/W21-P04</li>
+<li><strong>▼수정 이유</strong>: 카드 No. 오기로 인해, 수정하였습니다.</li>
 <li><strong>▼카드 교환에 관하여</strong>: 이 에라타 카드에 관해서는, 게임 진행상 치명적인 문제는 발생하지 않으므로, 교환 대응은 하지 않습니다.</li>
 <li><strong>교환 기간</strong>: 교환 실시 없음</li>
 </ul>
@@ -6420,7 +6539,8 @@ summary{cursor:pointer;font-weight:600}
 <ul>
 <li><strong>카드 No.</strong>: RN/W16-108</li>
 <li><strong>카드 명칭</strong>: 스나이델 (スナイデル)</li>
-<li><strong>▼수정 내용</strong>: シュナイデル ↓ スナイデル</li>
+<li><strong>▼수정 내용</strong>: 카드 명칭: シュナイデル ↓ 카드 명칭: スナイデル</li>
+<li><strong>▼수정 이유</strong>: 카드 명칭 오기로 인해, 수정하였습니다.</li>
 <li><strong>▼카드 교환에 관하여</strong>: 이 에라타 카드에 관해서는, 교환 대응을 실시합니다.</li>
 <li><strong>교환 기간</strong>: 교환 종료</li>
 </ul>
@@ -6446,7 +6566,8 @@ summary{cursor:pointer;font-weight:600}
 <ul>
 <li><strong>카드 No.</strong>: RW/WE16-P07</li>
 <li><strong>카드 명칭</strong>: 언제나 함께 아카네＆치하야 (いつも一緒に 朱音＆ちはや)</li>
-<li><strong>카드 No.</strong>: RW/WE16-P07</li>
+<li><strong>▼수정 내용</strong>: 카드 No.: RW/WE16-P07 ↓ 카드 No.: RW/W20-P07</li>
+<li><strong>▼수정 이유</strong>: 카드 No. 오기로 인해, 수정하였습니다.</li>
 <li><strong>▼카드 교환에 관하여</strong>: 이 에라타 카드에 관해서는, 게임 진행상 치명적인 문제는 발생하지 않으므로, 교환 대응은 하지 않습니다.</li>
 <li><strong>교환 기간</strong>: 교환 실시 없음</li>
 </ul>
@@ -6472,7 +6593,8 @@ summary{cursor:pointer;font-weight:600}
 <ul>
 <li><strong>카드 No.</strong>: SG/W19-045</li>
 <li><strong>카드 명칭</strong>: 네후스탄의 갑옷 (ネフシュタンの鎧)</li>
-<li><strong>▼수정 내용</strong>: ネフシュタインの鎧 ↓ ネフシュタンの鎧</li>
+<li><strong>▼수정 내용</strong>: 카드 명칭: ネフシュタインの鎧 ↓ 카드 명칭: ネフシュタンの鎧</li>
+<li><strong>▼수정 이유</strong>: 카드 명칭 오기로 인해, 수정하였습니다.</li>
 <li><strong>▼카드 교환에 관하여</strong>: 이 에라타 카드에 관해서는, 교환 대응을 실시합니다.</li>
 <li><strong>교환 기간</strong>: 교환 종료</li>
 </ul>
@@ -6480,8 +6602,8 @@ summary{cursor:pointer;font-weight:600}
 <ul>
 <li><strong>카드 No.</strong>: ZM/WE13-16</li>
 <li><strong>카드 명칭</strong>: 위대한 창 (大いなる槍)</li>
-<li><strong>카드 No.</strong>: ZM/WE13-16</li>
-<li><strong>카드 명칭</strong>: 위대한 창</li>
+<li><strong>▼수정 내용</strong>: 카드 No.: ZM/WE13-16 ↓ 카드 No.: ZM/WE13-T16</li>
+<li><strong>▼수정 이유</strong>: 카드 No. 오기로 인해, 수정하였습니다.</li>
 <li><strong>▼카드 교환에 관하여</strong>: 이 에라타 카드에 관해서는, 게임 진행상 치명적인 문제는 발생하지 않으므로, 교환 대응은 하지 않습니다.</li>
 <li><strong>교환 기간</strong>: 교환 실시 없음</li>
 </ul>
@@ -6489,17 +6611,17 @@ summary{cursor:pointer;font-weight:600}
 <ul>
 <li><strong>카드 No.</strong>: GC/S16-115</li>
 <li><strong>카드 명칭</strong>: 치켜뜬 눈 이노리 (上目遣い いのり)</li>
-<li><strong>카드 No.</strong>: GC/S16-115</li>
-<li><strong>카드 명칭</strong>: 치켜뜬 눈 이노리</li>
+<li><strong>▼수정 내용</strong>: 카드 No.: GC/S16-115 ↓ 카드 No.: GC/S16-120</li>
+<li><strong>▼수정 이유</strong>: 카드 No. 오기로 인해, 수정하였습니다.</li>
 <li><strong>▼카드 교환에 관하여</strong>: 이 에라타 카드에 관해서는, 게임 진행상 치명적인 문제는 발생하지 않으므로, 교환 대응은 하지 않습니다.</li>
 <li><strong>교환 기간</strong>: 교환 실시 없음</li>
 </ul>
 <h2>2012.4.13 PR 카드 「-THE GEARS OF DESTINY-」</h2>
 <ul>
 <li><strong>카드 No.</strong>: NA/W12-111</li>
-<li><strong>카드 명칭</strong>: 비비오＆아인하르트＆키리에 (-THE GEARS OF DESTINY-)</li>
-<li><strong>카드 No.</strong>: NA/W12-111</li>
-<li><strong>카드 명칭</strong>: 비비오＆아인하르트＆키리에</li>
+<li><strong>카드 명칭</strong>: -THE GEARS OF DESTINY- (-THE GEARS OF DESTINY-)</li>
+<li><strong>▼수정 내용</strong>: 카드 No.: NA/W12-111 ↓ 카드 No.: NA/W12-113</li>
+<li><strong>▼수정 이유</strong>: 카드 No. 오기로 인해, 수정하였습니다.</li>
 <li><strong>▼카드 교환에 관하여</strong>: 이 에라타 카드에 관해서는, 게임 진행상 치명적인 문제는 발생하지 않으므로, 교환 대응은 하지 않습니다.</li>
 <li><strong>교환 기간</strong>: 교환 실시 없음</li>
 </ul>
@@ -6507,8 +6629,8 @@ summary{cursor:pointer;font-weight:600}
 <ul>
 <li><strong>카드 No.</strong>: LB/W02-114</li>
 <li><strong>카드 명칭</strong>: “개 범벅” 사사미 (“犬まみれ”佐々美)</li>
-<li><strong>카드 No.</strong>: LB/W02-114</li>
-<li><strong>카드 명칭</strong>: “개 범벅” 사사미</li>
+<li><strong>▼수정 내용</strong>: 카드 No.: LB/W02-114 ↓ 카드 No.: LB/W02-121</li>
+<li><strong>▼수정 이유</strong>: 카드 No. 오기로 인해, 수정하였습니다.</li>
 <li><strong>▼카드 교환에 관하여</strong>: 이 에라타 카드에 관해서는, 게임 진행상 치명적인 문제는 발생하지 않으므로, 교환 대응은 하지 않습니다.</li>
 <li><strong>교환 기간</strong>: 교환 실시 없음</li>
 </ul>
@@ -6516,8 +6638,8 @@ summary{cursor:pointer;font-weight:600}
 <ul>
 <li><strong>카드 No.</strong>: DC/W01-101P</li>
 <li><strong>카드 명칭</strong>: 해질녘에 서 있는 유메 (夕暮れにたたずむ由夢)</li>
-<li><strong>카드 No.</strong>: DC/W01-101P</li>
-<li><strong>카드 명칭</strong>: 해질녘에 서 있는 유메</li>
+<li><strong>▼수정 내용</strong>: 카드 No.: DC/W01-101P ↓ 카드 No.: DC/W01-102P</li>
+<li><strong>▼수정 이유</strong>: 카드 No. 오기로 인해, 수정하였습니다.</li>
 <li><strong>▼카드 교환에 관하여</strong>: 이 에라타 카드에 관해서는, 게임 진행상 치명적인 문제는 발생하지 않으므로, 교환 대응은 하지 않습니다.</li>
 <li><strong>교환 기간</strong>: 교환 실시 없음</li>
 </ul>
@@ -6615,7 +6737,8 @@ summary{cursor:pointer;font-weight:600}
 <ul>
 <li><strong>카드 No.</strong>: SS/W14-T06</li>
 <li><strong>카드 명칭</strong>: 『염발작안의 토벌자』 샤나 (『炎髪灼眼の討ち手』シャナ)</li>
-<li><strong>▼수정 내용</strong>: “炎髪灼眼の討ち手”シャナ ↓ 『炎髪灼眼の討ち手』シャナ</li>
+<li><strong>▼수정 내용</strong>: 카드 명칭: “炎髪灼眼の討ち手”シャナ ↓ 카드 명칭: 『炎髪灼眼の討ち手』シャナ</li>
+<li><strong>▼수정 이유</strong>: 카드 명칭 표기 통일을 위해, 수정하였습니다.</li>
 <li><strong>▼카드 교환에 관하여</strong>: 이 에라타 카드에 관해서는, 게임 진행상 치명적인 문제는 발생하지 않으므로, 교환 대응은 하지 않습니다. ※「“炎髪灼眼の討ち手”シャナ」나 「『炎髪灼眼の討ち手』シャナ」로 표기된 카드는 동명 카드이므로, 덱에는 합쳐서 4장까지 넣을 수 있습니다.</li>
 <li><strong>교환 기간</strong>: 교환 실시 없음</li>
 </ul>
@@ -6623,7 +6746,8 @@ summary{cursor:pointer;font-weight:600}
 <ul>
 <li><strong>카드 No.</strong>: SS/W14-T09</li>
 <li><strong>카드 명칭</strong>: 『만조의 사수』 빌헬미나 카르멜 (『万条の仕手』ヴィルヘルミナ・カルメル)</li>
-<li><strong>▼수정 내용</strong>: “万条の仕手”ヴィルヘルミナ・カルメル ↓ 『万条の仕手』ヴィルヘルミナ・カルメル</li>
+<li><strong>▼수정 내용</strong>: 카드 명칭: “万条の仕手”ヴィルヘルミナ・カルメル ↓ 카드 명칭: 『万条の仕手』ヴィルヘルミナ・カルメル</li>
+<li><strong>▼수정 이유</strong>: 카드 명칭 표기 통일을 위해, 수정하였습니다.</li>
 <li><strong>▼카드 교환에 관하여</strong>: 이 에라타 카드에 관해서는, 게임 진행상 치명적인 문제는 발생하지 않으므로, 교환 대응은 하지 않습니다. ※「“万条の仕手”ヴィルヘルミナ・カルメル」나 「『万条の仕手』ヴィルヘルミナ・カルメル」로 표기된 카드는 동명 카드이므로, 덱에는 합쳐서 4장까지 넣을 수 있습니다.</li>
 <li><strong>교환 기간</strong>: 교환 실시 없음</li>
 </ul>
@@ -6631,7 +6755,8 @@ summary{cursor:pointer;font-weight:600}
 <ul>
 <li><strong>카드 No.</strong>: SS/W14-T11</li>
 <li><strong>카드 명칭</strong>: 『의장의 추격자』 캄신 네브하우 (『儀装の駆り手』カムシン・ネブハーウ)</li>
-<li><strong>▼수정 내용</strong>: “儀装の駆り手”カムシン・ネブハーウ ↓ 『儀装の駆り手』カムシン・ネブハーウ</li>
+<li><strong>▼수정 내용</strong>: 카드 명칭: “儀装の駆り手”カムシン・ネブハーウ ↓ 카드 명칭: 『儀装の駆り手』カムシン・ネブハーウ</li>
+<li><strong>▼수정 이유</strong>: 카드 명칭 표기 통일을 위해, 수정하였습니다.</li>
 <li><strong>▼카드 교환에 관하여</strong>: 이 에라타 카드에 관해서는, 게임 진행상 치명적인 문제는 발생하지 않으므로, 교환 대응은 하지 않습니다. ※「“儀装の駆り手”カムシン・ネブハーウ」나 「『儀装の駆り手』カムシン・ネブハーウ」로 표기된 카드는 동명 카드이므로, 덱에는 합쳐서 4장까지 넣을 수 있습니다.</li>
 <li><strong>교환 기간</strong>: 교환 실시 없음</li>
 </ul>
@@ -6666,7 +6791,8 @@ summary{cursor:pointer;font-weight:600}
 <ul>
 <li><strong>카드 No.</strong>: MB/S10-068</li>
 <li><strong>카드 명칭</strong>: “쿠레나이세키슈”아키하 (“紅赤朱”秋葉)</li>
-<li><strong>▼수정 내용</strong>: “紅赤主”秋葉 ↓ “紅赤朱”秋葉</li>
+<li><strong>▼수정 내용</strong>: 카드 명칭: “紅赤主”秋葉 ↓ 카드 명칭: “紅赤朱”秋葉</li>
+<li><strong>▼수정 이유</strong>: 카드 명칭 오기로 인해, 수정하였습니다.</li>
 <li><strong>▼카드 교환에 관하여</strong>: 이 에라타 카드에 관해서는, 교환 대응을 실시합니다.</li>
 <li><strong>교환 기간</strong>: 교환 종료</li>
 </ul>
@@ -6746,7 +6872,8 @@ summary{cursor:pointer;font-weight:600}
 <ul>
 <li><strong>카드 No.</strong>: KF/S05-055</li>
 <li><strong>카드 명칭</strong>: 테리＆앤디 (テリー＆アンディ)</li>
-<li><strong>▼수정 내용</strong>: テリー＆アンディー ↓ テリー＆アンディ</li>
+<li><strong>▼수정 내용</strong>: 카드 명칭: テリー＆アンディー ↓ 카드 명칭: テリー＆アンディ</li>
+<li><strong>▼수정 이유</strong>: 카드 명칭 오기로 인해, 수정하였습니다.</li>
 <li><strong>▼카드 교환에 관하여</strong>: 이 에라타 카드에 관해서는, 교환 대응을 실시합니다.</li>
 <li><strong>교환 기간</strong>: 교환 종료</li>
 </ul>
@@ -6781,9 +6908,10 @@ summary{cursor:pointer;font-weight:600}
 <ul>
 <li><strong>카드 No.</strong>: NS/W03-108</li>
 <li><strong>카드 명칭</strong>: 공중전 마도사 타카마치 나노하 25세 (空戦魔導師 高町なのは25歳)</li>
-<li><strong>카드 No.</strong>: NS/W03-108</li>
-<li><strong>▼수정 내용</strong>: 【자동】다른 당신의, 「フェイト＆アルフ」와 「八神 はやて」가 있다면, 이 카드의 파워를 +2000. ↓ 【영속】다른 당신의, 「フェイト＆アルフ」와 「八神 はやて」가 있다면, 이 카드의 파워를 +2000.</li>
-<li><strong>▼수정 이유</strong>: 텍스트 오기로 인해, 수정하였습니다.</li>
+<li><strong>▼수정 내용 1</strong>: 카드 No.: NS/W03-108 ↓ 카드 No.: NS/W04-108</li>
+<li><strong>▼수정 이유 1</strong>: 카드 No. 오기로 인해, 수정하였습니다.</li>
+<li><strong>▼수정 내용 2</strong>: 【자동】다른 당신의, 「フェイト＆アルフ」와 「八神 はやて」가 있다면, 이 카드의 파워를 +2000. ↓ 【영속】다른 당신의, 「フェイト＆アルフ」와 「八神 はやて」가 있다면, 이 카드의 파워를 +2000.</li>
+<li><strong>▼수정 이유 2</strong>: 텍스트 오기로 인해, 수정하였습니다.</li>
 <li><strong>▼카드 교환에 관하여</strong>: 이 에라타 카드에 관해서는, 게임 진행상 치명적인 문제는 발생하지 않으므로, 교환 대응은 하지 않습니다.</li>
 <li><strong>교환 기간</strong>: 교환 실시 없음</li>
 </ul>
@@ -6791,9 +6919,10 @@ summary{cursor:pointer;font-weight:600}
 <ul>
 <li><strong>카드 No.</strong>: CL/WE05-19</li>
 <li><strong>카드 명칭</strong>: 쿄＆우시오 (杏＆汐)</li>
-<li><strong>카드 No.</strong>: CL/WE05-19</li>
-<li><strong>▼수정 내용</strong>: 【자동】다른 당신의파워500이하의 캐릭터 전부에, 『【자동】앙코르 [패의 캐릭터를 1장 대기실에 놓는다]』를 준다. ↓ 【영속】다른 당신의파워500이하의 캐릭터 전부에, 『【자동】앙코르 [패의 캐릭터를 1장 대기실에 놓는다]』를 준다.</li>
-<li><strong>▼수정 이유</strong>: 텍스트 오기로 인해, 수정하였습니다.</li>
+<li><strong>▼수정 내용 1</strong>: 카드 No.: CL/WE05-19 ↓ 카드 No.: CL/WE04-19</li>
+<li><strong>▼수정 이유 1</strong>: 카드 No. 오기로 인해, 수정하였습니다.</li>
+<li><strong>▼수정 내용 2</strong>: 【자동】다른 당신의 파워 500 이하의 캐릭터 전부에, 『【자동】앙코르 [패의 캐릭터를 1장 대기실에 놓는다]』를 준다. ↓ 【영속】다른 당신의 파워 500 이하의 캐릭터 전부에, 『【자동】앙코르 [패의 캐릭터를 1장 대기실에 놓는다]』를 준다.</li>
+<li><strong>▼수정 이유 2</strong>: 텍스트 오기로 인해, 수정하였습니다.</li>
 <li><strong>▼카드 교환에 관하여</strong>: 이 에라타 카드에 관해서는, 게임 진행상 치명적인 문제는 발생하지 않으므로, 교환 대응은 하지 않습니다.</li>
 <li><strong>교환 기간</strong>: 교환 실시 없음</li>
 </ul>
@@ -6828,8 +6957,8 @@ summary{cursor:pointer;font-weight:600}
 <ul>
 <li><strong>카드 No.</strong>: LS/W05-050SP</li>
 <li><strong>카드 명칭</strong>: 여름 축제 (夏祭り)</li>
-<li><strong>카드 No.</strong>: LS/W05-050SP</li>
-<li><strong>카드 명칭</strong>: 럭키☆채널</li>
+<li><strong>▼수정 내용</strong>: 카드 No.: LS/W05-050SP ↓ 카드 No.: LS/W05-048SP</li>
+<li><strong>▼수정 이유</strong>: 카드 No. 오기로 인해, 수정하였습니다.</li>
 <li><strong>▼카드 교환에 관하여</strong>: 이 에라타 카드에 관해서는, 게임 진행상 치명적인 문제는 발생하지 않으므로, 교환 대응은 하지 않습니다.</li>
 <li><strong>교환 기간</strong>: 교환 실시 없음</li>
 </ul>
@@ -6906,7 +7035,7 @@ summary{cursor:pointer;font-weight:600}
 <details>
 <summary>목록 펼치기 (탭하여 표시)</summary>
 <p><strong>모든 타이틀에서 사용 가능</strong></p>
-<table><thead><tr><th>카드번호</th><th>카드명</th></tr></thead><tbody><tr><td>CJ/MIR-001</td><td>컬처 재팬의 아이돌 미라이</td></tr><tr><td>VG/SPR-001</td><td>센도 아이치</td></tr><tr><td>VG/SPR-002</td><td>스탠드 업!</td></tr><tr><td>VG/SPR-003</td><td>스즈가모리 렌</td></tr><tr><td>WS/PSP-P01</td><td>포근함 전개 소꿉친구 스즈카</td></tr><tr><td>WS/TBS-001</td><td>학원의 아이돌 미치</td></tr><tr><td>WS/TBS-002</td><td>선택받은 전사 타케시</td></tr><tr><td>WS/TBS-003</td><td>헤이세이 거유 아가씨 시즈루</td></tr><tr><td>WS/SPR-P01</td><td>『Love』 아이미</td></tr><tr><td>WS/SPR-P02</td><td>아이미</td></tr><tr><td>WS/WPR-P01</td><td>미소 만개 에미츤</td></tr><tr><td>AG/SPR-P01</td><td>악의 군단! 돈 님</td></tr><tr><td>WS/SPR-004</td><td>안조 토코하 역 닛타 에미</td></tr><tr><td>WS/SPR-005</td><td>토쿠라 미사키 역 킷타 이즈미</td></tr><tr><td>BF/SPR-P01</td><td>나나나 파루코 역 토쿠이 소라</td></tr><tr><td>WS/WPR-P02</td><td>에뮤~직♪</td></tr><tr><td>WS/WPR-P04</td><td>잇는 멜로디 닛타 에미</td></tr><tr><td>WS/WPR-P05</td><td>초코땅</td></tr><tr><td>WS/SPR-P03</td><td>“사복 차림으로 외출” 미모리 스즈코</td></tr><tr><td>WS/WPR-P06</td><td>함께 힘내자!! 오자키 유카</td></tr><tr><td>WS/WPR-P07</td><td>함께 힘내자!! 아이미</td></tr><tr><td>WS/WPR-P08</td><td>2020년도 힘내자! 아이미</td></tr><tr><td>WS/WSPR-P01</td><td>Happy 13th Anniversary !!</td></tr><tr><td>WS/WSPR-P02 / WS/WSPR-P02S</td><td>Happy 14th Anniversary !!</td></tr><tr><td>WS/SPR-P04</td><td>폭등!!</td></tr><tr><td>WS/WSPR-P03</td><td>Happy 15th Anniversary !! [벚꽃]</td></tr><tr><td>WS/WSPR-P04</td><td>Happy 15th Anniversary !! [Spring]</td></tr><tr><td>WS/SPR-P05</td><td>BUSHIROAD EXPO 2023 -ASIA-</td></tr><tr><td>WS/WSPR-P05</td><td>Happy 15th Anniversary !! [사랑]</td></tr><tr><td>WS/WSPR-P06</td><td>Happy 63th Anniversary !! [사장]</td></tr><tr><td>WS/WSPR-P07</td><td>Happy 15th Anniversary !! [가을]</td></tr><tr><td>WS/WSPR-P08 / WS/WSPR-P08S</td><td>Happy 15th Anniversary !! [축하]</td></tr><tr><td>WS/WSPR-P09</td><td>Happy 16th Anniversary !! [별]</td></tr><tr><td>WS/WSPR-P10</td><td>Happy 16th Anniversary !! [봄]</td></tr><tr><td>WS/WSPR-P11 / WS/WSPR-P11S</td><td>Happy 16th Anniversary !! [승리]</td></tr><tr><td>WS/SPR-P06</td><td>TableCon Quest</td></tr><tr><td>WS/WSPR-P12</td><td>Happy 16th Anniversary !! [책]</td></tr><tr><td>WS/WSPR-P13 / WS/WSPR-P13S</td><td>Happy 16th Anniversary !! [진홍]</td></tr><tr><td>WS/WSPR-P14a / WS/WSPR-P14b / WS/WSPR-P14c / WS/WSPR-P14d</td><td>BUSHIROAD CARD FIGHT 2025</td></tr><tr><td>WS/WSPR-P15 / WS/WSPR-P15S</td><td>Happy 17th Anniversary !! [수면 아래]</td></tr><tr><td>WS/WSPR-P16</td><td>Happy 17th Anniversary !! [이계]</td></tr><tr><td>WS/WSPR-P17</td><td>Happy 17th Anniversary !! [축제]</td></tr><tr><td>NSO/YUUKA-P02</td><td>Weiß＆Schwarz 니시오 유카</td></tr><tr><td>WS/WSPR-P18 / WS/WSPR-P18S</td><td>Happy 17th Anniversary!![화원]</td></tr><tr><td>WS/WSPR-P20a / WS/WSPR-P20b / WS/WSPR-P20c / WS/WSPR-P20d</td><td>WORLD GRAND PRIX 2025</td></tr><tr><td>WS/WPR-P09 / WS/WPR-P09b</td><td>레츠! 바이스슈발츠!! 와타세 유즈키</td></tr><tr><td>WS/WPR-P10 / WS/WPR-P10b</td><td>레츠! 바이스슈발츠!! 타테이시 린</td></tr><tr><td>WS/SPR-P07 / WS/SPR-P07b</td><td>레츠! 바이스슈발츠!! 니시오 유카</td></tr><tr><td>WS/SPR-P08 / WS/SPR-P08b</td><td>레츠! 바이스슈발츠!! 후카가와 루카</td></tr><tr><td>WS/SPR-P09 / WS/SPR-P09b</td><td>레츠! 바이스슈발츠!! 치하루</td></tr><tr><td>WS/WSPR-P21 / WS/WSPR-P21S</td><td>Happy 18th Anniversary !! [흰색]</td></tr><tr><td>WS/WSPR-P23</td><td>Happy 18th Anniversary !! [추억]</td></tr><tr><td>WS/WSPR-P24</td><td>Happy 18th Anniversary !! [축제]</td></tr><tr><td>WS/WSPR-P25</td><td>18년, 그 너머로</td></tr><tr><td>WS/WSPR-P22a / WS/WSPR-P22b / WS/WSPR-P22c / WS/WSPR-P22d</td><td>BUSHIROAD CARD FIGHT 2026</td></tr><tr><td>WS/WSPR-P26</td><td>GiGO의 타이야키 아오키 히나</td></tr><tr><td>WS/WSPR-P27</td><td>GiGO 아오키 히나</td></tr><tr><td>WS/WSPR-P28</td><td>인간 오십 년 몽환과 같도다</td></tr></tbody></table>
+<table><thead><tr><th>카드번호</th><th>카드명</th></tr></thead><tbody><tr><td>CJ/MIR-001</td><td>컬처 재팬의 아이돌 미라이</td></tr><tr><td>VG/SPR-001</td><td>센도 아이치</td></tr><tr><td>VG/SPR-002</td><td>스탠드 업!</td></tr><tr><td>VG/SPR-003</td><td>스즈가모리 렌</td></tr><tr><td>WS/PSP-P01</td><td>포근함 전개 소꿉친구 스즈카</td></tr><tr><td>WS/TBS-001</td><td>학원의 아이돌 미치</td></tr><tr><td>WS/TBS-002</td><td>선택받은 전사 타케시</td></tr><tr><td>WS/TBS-003</td><td>헤이세이 거유 아가씨 시즈루</td></tr><tr><td>WS/SPR-P01</td><td>『Love』 아이미</td></tr><tr><td>WS/SPR-P02</td><td>아이미</td></tr><tr><td>WS/WPR-P01</td><td>미소 만개 에미츤</td></tr><tr><td>AG/SPR-P01</td><td>악의 군단! 돈 님</td></tr><tr><td>WS/SPR-004</td><td>안조 토코하 역 닛타 에미</td></tr><tr><td>WS/SPR-005</td><td>토쿠라 미사키 역 킷타 이즈미</td></tr><tr><td>BF/SPR-P01</td><td>나나나 파루코 역 토쿠이 소라</td></tr><tr><td>WS/WPR-P02</td><td>에뮤~직♪</td></tr><tr><td>WS/WPR-P04</td><td>잇는 멜로디 닛타 에미</td></tr><tr><td>WS/WPR-P05</td><td>초코땅</td></tr><tr><td>WS/SPR-P03</td><td>“사복 차림으로 외출” 미모리 스즈코</td></tr><tr><td>WS/WPR-P06</td><td>함께 힘내자!! 오자키 유카</td></tr><tr><td>WS/WPR-P07</td><td>함께 힘내자!! 아이미</td></tr><tr><td>WS/WPR-P08</td><td>2020년도 힘내자! 아이미</td></tr><tr><td>WS/WSPR-P01</td><td>Happy 13th Anniversary !!</td></tr><tr><td>WS/WSPR-P02 / WS/WSPR-P02S</td><td>Happy 14th Anniversary !!</td></tr><tr><td>WS/SPR-P04</td><td>폭등!!</td></tr><tr><td>WS/WSPR-P03</td><td>Happy 15th Anniversary !! [벚꽃]</td></tr><tr><td>WS/WSPR-P04</td><td>Happy 15th Anniversary !! [Spring]</td></tr><tr><td>WS/SPR-P05</td><td>BUSHIROAD EXPO 2023 -ASIA-</td></tr><tr><td>WS/WSPR-P05</td><td>Happy 15th Anniversary !! [사랑]</td></tr><tr><td>WS/WSPR-P06</td><td>Happy 63th Anniversary !! [사장]</td></tr><tr><td>WS/WSPR-P07</td><td>Happy 15th Anniversary !! [가을]</td></tr><tr><td>WS/WSPR-P08 / WS/WSPR-P08S</td><td>Happy 15th Anniversary !! [축하]</td></tr><tr><td>WS/WSPR-P09</td><td>Happy 16th Anniversary !! [별]</td></tr><tr><td>WS/WSPR-P10</td><td>Happy 16th Anniversary !! [봄]</td></tr><tr><td>WS/WSPR-P11 / WS/WSPR-P11S</td><td>Happy 16th Anniversary !! [승리]</td></tr><tr><td>WS/SPR-P06</td><td>TableCon Quest</td></tr><tr><td>WS/WSPR-P12</td><td>Happy 16th Anniversary !! [책]</td></tr><tr><td>WS/WSPR-P13 / WS/WSPR-P13S</td><td>Happy 16th Anniversary !! [진홍]</td></tr><tr><td>WS/WSPR-P14a / WS/WSPR-P14b / WS/WSPR-P14c / WS/WSPR-P14d</td><td>BUSHIROAD CARD FIGHT 2025</td></tr><tr><td>WS/WSPR-P15 / WS/WSPR-P15S</td><td>Happy 17th Anniversary !! [수면 아래]</td></tr><tr><td>WS/WSPR-P16</td><td>Happy 17th Anniversary !! [이계]</td></tr><tr><td>WS/WSPR-P17</td><td>Happy 17th Anniversary !! [축제]</td></tr><tr><td>NSO/YUUKA-P02</td><td>Weiß＆Schwarz 니시오 유카</td></tr><tr><td>WS/WSPR-P18 / WS/WSPR-P18S</td><td>Happy 17th Anniversary!![화원]</td></tr><tr><td>WS/WSPR-P20a / WS/WSPR-P20b / WS/WSPR-P20c / WS/WSPR-P20d</td><td>WORLD GRAND PRIX 2025</td></tr><tr><td>WS/WPR-P09 / WS/WPR-P09b</td><td>레츠! 바이스슈발츠!! 와타세 유즈키</td></tr><tr><td>WS/WPR-P10 / WS/WPR-P10b</td><td>레츠! 바이스슈발츠!! 타테이시 린</td></tr><tr><td>WS/SPR-P07 / WS/SPR-P07b</td><td>레츠! 바이스슈발츠!! 니시오 유카</td></tr><tr><td>WS/SPR-P08 / WS/SPR-P08b</td><td>레츠! 바이스슈발츠!! 후카가와 루카</td></tr><tr><td>WS/SPR-P09 / WS/SPR-P09b</td><td>레츠! 바이스슈발츠!! 치하루</td></tr><tr><td>WS/WSPR-P21 / WS/WSPR-P21S</td><td>Happy 18th Anniversary !! [흰색]</td></tr><tr><td>WS/WSPR-P23</td><td>Happy 18th Anniversary !! [추억]</td></tr><tr><td>WS/WSPR-P24</td><td>Happy 18th Anniversary !! [축제]</td></tr><tr><td>WS/WSPR-P25</td><td>18년, 그 너머로</td></tr><tr><td>WS/WSPR-P22a / WS/WSPR-P22b / WS/WSPR-P22c / WS/WSPR-P22d</td><td>BUSHIROAD CARD FIGHT 2026</td></tr><tr><td>WS/WSPR-P26</td><td>GiGO의 타이야키 아오키 히나</td></tr><tr><td>WS/WSPR-P27</td><td>GiGO 아오키 히나</td></tr><tr><td>WS/WSPR-P28</td><td>인간 오십 년 몽환과 같도다</td></tr><tr><td>WS/WSPR-P29 / WS/WSPR-P29S</td><td>Happy 18th Anniversary !! [언덕]</td></tr><tr><td>WS/SPR-P07c</td><td>레츠! 바이스슈발츠!! 니시오 유카</td></tr><tr><td>WS/SPR-P08c</td><td>레츠! 바이스슈발츠!! 후카가와 루카</td></tr><tr><td>WS/SPR-P09c</td><td>레츠! 바이스슈발츠!! 치하루</td></tr><tr><td>WS/WPR-P09c</td><td>레츠! 바이스슈발츠!! 와타세 유즈키</td></tr><tr><td>WS/WPR-P10c</td><td>레츠! 바이스슈발츠!! 타테이시 린</td></tr><tr><td>WS/WSPR-P32</td><td>레츠! 바이스슈발츠!! 카가미 카린</td></tr><tr><td>WS/WSPR-P33</td><td>레츠! 바이스슈발츠!! 사사키 미쿠</td></tr><tr><td>WS/WSPR-P34</td><td>캔슬입니다‼</td></tr><tr><td>WS/WSPR-P35</td><td>캔슬인 거야‼</td></tr></tbody></table>
 <p><strong>『다 카포 & Dal Segno』에서도 사용 가능</strong></p>
 <table><thead><tr><th>카드번호</th><th>카드명</th></tr></thead><tbody><tr><td>MK/S11-107</td><td>의상 변경!? 샤로＆유메</td></tr></tbody></table>
 <p><strong>『리틀 버스터즈!』에서도 사용 가능</strong></p>
@@ -7088,7 +7217,7 @@ summary{cursor:pointer;font-weight:600}
 <h2>상세한 덱 구축 규칙</h2>
 <p>상세한 규칙을 알고 싶으신 분은 이쪽 PDF를 확인해 주십시오.</p>
 <ul>
-<li>■ 바이스슈발츠 덱 구축 규칙 ver.1.138 (PDF 형식) (2026/9/1 갱신)</li>
+<li>■ 바이스슈발츠 덱 구축 규칙 ver.1.139 (PDF 형식) (2026/11/6 갱신)</li>
 </ul>
 <p>※ 레어도 VR(비주얼 레어)에 관한 특례 규칙이나, 특별한 공통면 카드에 관한 규칙 등은 이곳에 게재되어 있습니다.</p></section>
 <section id="penalty" class="doc" hidden><h1>벌칙 규정 적용 이력</h1>
@@ -7429,20 +7558,131 @@ summary{cursor:pointer;font-weight:600}
 <p>1. <strong>助太刀 → 조태도</strong> (한자음 표기 채택. 대안: 조력 / 스케다치) 2. <strong>投了 → 기권</strong> 3. <strong>트리거 아이콘 명칭</strong> — リターン→바운스, プール→스톡, カムバック→살베지 (통용 명칭 채택) 4. <strong>オーナー/マスター → 오너/마스터</strong>, <strong>ターン回数制限 → 턴 횟수 제한</strong> — 룰 전용 용어로 표기 방침(음차/의역) 적용</p></section></main>
 </div>
 <script>
+const META=[{"id":"rb-00","title":"종합 룰 개요","group":"종합 룰"},{"id":"rb-01","title":"1. 게임 개요","group":"종합 룰"},{"id":"rb-02","title":"2. 카드 정보","group":"종합 룰"},{"id":"rb-03","title":"3. 게임의 영역","group":"종합 룰"},{"id":"rb-04","title":"4. 기초 용어","group":"종합 룰"},{"id":"rb-05","title":"5. 게임의 준비","group":"종합 룰"},{"id":"rb-06","title":"6. 게임의 진행","group":"종합 룰"},{"id":"rb-07","title":"7. 어택과 배틀","group":"종합 룰"},{"id":"rb-08","title":"8. 플레이와 해결","group":"종합 룰"},{"id":"rb-09","title":"9. 룰 처리","group":"종합 룰"},{"id":"rb-10","title":"10. 키워드 능력","group":"종합 룰"},{"id":"rb-11","title":"11. 기타","group":"종합 룰"},{"id":"qa","title":"일반 룰","group":"Q&A"},{"id":"qa-cards","title":"카드 지정","group":"Q&A"},{"id":"floor-basic","title":"기본 플로어 룰","group":"플로어 룰"},{"id":"floor-adv","title":"응용 플로어 룰","group":"플로어 룰"},{"id":"errata","title":"에라타 카드 리스트","group":"그 외 자료"},{"id":"deck","title":"덱 구축 규칙","group":"그 외 자료"},{"id":"penalty","title":"페널티 이력","group":"그 외 자료"},{"id":"glossary","title":"용어 글로서리","group":"참고"}];
+const $=s=>document.querySelector(s);
 const links=[...document.querySelectorAll('.nav-link')];
-function show(id){
+const sq=$('#sq');
+let curSec='';
+function toggleSide(v){$('.side').classList.toggle('open',v);}
+function show(id,keepScroll){
+ if(id!==curSec)clearMarks();
  document.querySelectorAll('.doc').forEach(s=>s.hidden=s.id!==id);
  links.forEach(a=>a.classList.toggle('active',a.dataset.target===id));
- document.querySelector('.side').classList.remove('open');
- document.getElementById('main').scrollTop=0;window.scrollTo(0,0);
+ toggleSide(false);
+ curSec=id;
+ if(!keepScroll)window.scrollTo(0,0);
 }
-links.forEach(a=>a.addEventListener('click',e=>{show(a.dataset.target);}));
-function filterNav(v){v=v.trim().toLowerCase();links.forEach(a=>a.classList.toggle('hide',v&&!a.textContent.toLowerCase().includes(v)));document.querySelectorAll('.nav-group').forEach(g=>{const any=[...g.querySelectorAll('.nav-link')].some(a=>!a.classList.contains('hide'));g.style.display=any?'':'none';});}
+links.forEach(a=>a.addEventListener('click',()=>{clearMarks();show(a.dataset.target);}));
 function qaFilter(inp){const q=inp.value.trim().toLowerCase();const sec=inp.closest('.doc');const items=[...sec.querySelectorAll('.qa-item')];let shown=0;items.forEach(it=>{const m=!q||it.textContent.toLowerCase().includes(q);it.style.display=m?'':'none';if(m)shown++;});const c=sec.querySelector('.qa-count');if(c)c.textContent=q?(shown+' / '+items.length+'건'):(items.length+'건');}
 function tglTheme(){const r=document.documentElement;const cur=r.getAttribute('data-theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');const nx=cur==='dark'?'light':'dark';r.setAttribute('data-theme',nx);try{localStorage.setItem('ws-theme',nx)}catch(e){}}
+
+/* ── 전체 검색 ───────────────────────────────────────── */
+// 전각 영숫자→반각·소문자. 글자 수를 바꾸지 않아야 원문 위치에 그대로 하이라이트할 수 있다.
+const norm=s=>s.replace(/[\uFF01-\uFF5E]/g,c=>String.fromCharCode(c.charCodeAt(0)-0xFEE0)).replace(/\u3000/g,' ').toLowerCase();
+const esc=s=>s.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const terms=q=>[...new Set(norm(q).split(/\s+/).filter(Boolean))];
+const TITLE={},GROUP={};META.forEach(m=>{TITLE[m.id]=m.title;GROUP[m.id]=m.group;});
+function ranges(n,ts){const rs=[];for(const t of ts){let i=n.indexOf(t);while(i>=0){rs.push([i,i+t.length]);i=n.indexOf(t,i+t.length);}}
+ rs.sort((a,b)=>a[0]-b[0]||b[1]-a[1]);const out=[];for(const r of rs){const l=out[out.length-1];if(l&&r[0]<=l[1])l[1]=Math.max(l[1],r[1]);else out.push(r.slice());}return out;}
+let IDX=null;
+function ownText(el){if(el.tagName==='TR')return [...el.cells].map(c=>c.textContent.trim()).join(' · ');
+ if(el.tagName!=='LI')return el.textContent;let t='';el.childNodes.forEach(n=>{if(!(n.nodeType===1&&/^(UL|OL)$/.test(n.tagName)))t+=n.textContent;});return t;}
+function buildIdx(){IDX=[];
+ for(const m of META){const sec=document.getElementById(m.id);if(!sec)continue;const stack=[];
+  sec.querySelectorAll('h1,h2,h3,h4,h5,p,li,tr,blockquote,summary').forEach(el=>{
+   if(el.tagName==='P'&&el.parentElement.closest('li,td,th,blockquote'))return;
+   const txt=ownText(el).replace(/\s+/g,' ').trim();if(!txt)return;
+   const hl=/^H([1-5])$/.exec(el.tagName);
+   if(hl){const lv=+hl[1];stack.length=lv;stack[lv-1]=txt;}
+   IDX.push({sec:m.id,el,txt,n:norm(txt),ctx:hl?'':stack.slice(1).filter(Boolean).join(' › ')});
+  });}}
+let lastQ='',hits=[],scope='',limit=150,resScroll=0;
+function find(q){if(!IDX)buildIdx();const ts=terms(q);const out=ts.length?IDX.filter(r=>ts.every(t=>r.n.includes(t))):[];out.forEach((r,i)=>r.hi=i);return out;}
+function setQuery(q){q=q.trim();if(q!==lastQ){lastQ=q;hits=q?find(q):[];scope='';limit=150;resScroll=0;}}
+function snippet(r,ts){const rs=ranges(r.n,ts),W=150,t=r.txt;let s=rs.length?Math.max(0,rs[0][0]-45):0;const e=Math.min(t.length,s+W);s=Math.max(0,Math.min(s,e-W));
+ let o=s>0?'…':'',p=s;for(const [a,b] of rs){if(b<=p||a>=e)continue;const aa=Math.max(a,p),bb=Math.min(b,e);o+=esc(t.slice(p,aa))+'<mark>'+esc(t.slice(aa,bb))+'</mark>';p=bb;}
+ return o+esc(t.slice(p,e))+(e<t.length?'…':'');}
+// 검색창 입력 → 결과 화면. 문서를 읽다가 검색을 시작하면 히스토리에 한 번만 쌓아 '뒤로'로 돌아갈 수 있게 한다.
+function runSearch(q){q=q.trim();
+ if(!q&&curSec!=='search'){setQuery('');return;}
+ hideRecent();setQuery(q);
+ const h=q?'#q='+encodeURIComponent(q):'#search';
+ if(curSec!=='search'){history.pushState(null,'',h);show('search');}else history.replaceState(null,'',h);
+ renderResults();}
+function renderResults(){const box=$('#sres'),q=lastQ;
+ if(!q){box.innerHTML='<h1>전체 검색</h1>'+(RECENT.length?'<div class="sr-scope">'+recentHtml()+'</div>':'')+
+  '<ul class="sr-tips"><li>종합 룰·Q&amp;A·플로어 룰·에라타·덱 구축 규칙·페널티·글로서리 전체에서 찾습니다.</li><li>여러 단어를 띄어 쓰면 <strong>모두 포함된</strong> 항목만 보여 줍니다. (예: <code>앙코르 리버스</code>)</li><li>조항 번호나 일본어 원어로도 찾을 수 있습니다. (예: <code>7.4</code>, <code>控え室</code>)</li><li>키보드 <code>/</code> 또는 <code>Ctrl+K</code> 로 검색창, 결과에서는 <code>↑</code> <code>↓</code> 로 이동합니다.</li></ul>';return;}
+ const cnt={},per={};hits.forEach(r=>{cnt[GROUP[r.sec]]=(cnt[GROUP[r.sec]]||0)+1;per[r.sec]=(per[r.sec]||0)+1;});
+ const list=scope?hits.filter(r=>GROUP[r.sec]===scope):hits;
+ const ts=terms(q),nq=norm(q);
+ const docs=META.filter(m=>ts.every(t=>norm(m.title).includes(t)));
+ let o='<h1>검색 결과</h1><p class="sr-meta">“'+esc(q)+'” — '+hits.length+'건 · 문서 '+Object.keys(per).length+'개</p>';
+ if(docs.length)o+='<div class="sr-docs chips">'+docs.map(m=>'<a class="chip" style="padding:3px 11px" href="#'+m.id+'">📄 '+esc(m.title)+'</a>').join('')+'</div>';
+ if(hits.length){o+='<div class="sr-scope chips"><button class="chip'+(scope?'':' on')+'" data-scope="">전체<span class="n">'+hits.length+'</span></button>'+
+  [...new Set(META.map(m=>m.group))].filter(g=>cnt[g]).map(g=>'<button class="chip'+(scope===g?' on':'')+'" data-scope="'+esc(g)+'">'+esc(g)+'<span class="n">'+cnt[g]+'</span></button>').join('')+'</div>';}
+ else o+='<p>일치하는 내용이 없습니다. 띄어쓰기를 줄이거나 다른 표기(예: <code>CX</code> / <code>클라이맥스</code>)로 찾아보세요.</p>';
+ let prev='';list.slice(0,limit).forEach(r=>{
+  if(r.sec!==prev){prev=r.sec;o+='<div class="sr-group"><span>'+esc(TITLE[r.sec])+'</span><span class="n">'+per[r.sec]+'건</span></div>';}
+  o+='<a class="sr" href="#'+r.sec+'" data-i="'+r.hi+'">'+(r.ctx?'<div class="sr-ctx">'+esc(r.ctx)+'</div>':'')+'<div class="sr-txt">'+snippet(r,ts)+'</div></a>';});
+ if(list.length>limit)o+='<button class="icon-btn sr-more">더 보기 (나머지 '+(list.length-limit)+'건)</button>';
+ box.innerHTML=o;}
+$('#sres').addEventListener('click',e=>{const a=e.target.closest('a.sr');if(a){e.preventDefault();openHit(+a.dataset.i);return;}
+ const c=e.target.closest('[data-scope]');if(c){scope=c.dataset.scope;limit=150;renderResults();return;}
+ if(e.target.closest('.sr-more')){limit+=300;renderResults();}});
+$('#sres').addEventListener('keydown',e=>{const a=e.target.closest('a.sr');if(!a||!/^Arrow(Up|Down)$/.test(e.key))return;e.preventDefault();
+ const all=[...document.querySelectorAll('#sres a.sr')],i=all.indexOf(a)+(e.key==='ArrowDown'?1:-1);if(i<0)sq.focus();else if(all[i])all[i].focus();});
+// 본문 하이라이트
+let marks=[],cur=-1,hitTarget=null;
+function clearMarks(){const ps=new Set();marks.forEach(m=>{const p=m.parentNode;if(p){p.replaceChild(document.createTextNode(m.textContent),m);ps.add(p);}});ps.forEach(p=>p.normalize());marks=[];cur=-1;$('#hitbar').hidden=true;}
+function markSection(id,ts){clearMarks();const sec=document.getElementById(id);
+ const w=document.createTreeWalker(sec,NodeFilter.SHOW_TEXT),nodes=[];while(w.nextNode())nodes.push(w.currentNode);
+ for(const nd of nodes){if(marks.length>3000)break;const t=nd.nodeValue,rs=ranges(norm(t),ts);if(!rs.length)continue;const f=document.createDocumentFragment();let p=0;
+  for(const [a,b] of rs){if(a>p)f.appendChild(document.createTextNode(t.slice(p,a)));const m=document.createElement('mark');m.textContent=t.slice(a,b);f.appendChild(m);marks.push(m);p=b;}
+  if(p<t.length)f.appendChild(document.createTextNode(t.slice(p)));nd.parentNode.replaceChild(f,nd);}}
+function reveal(el){for(let d=el.closest('details');d;d=d.parentElement.closest('details'))d.open=true;
+ const qi=el.closest('.qa-item');if(qi&&qi.style.display==='none'){const inp=qi.closest('.doc').querySelector('.qa-filter');inp.value='';qaFilter(inp);}}
+function flash(el){el.classList.remove('flash');void el.offsetWidth;el.classList.add('flash');}
+function setCur(k){if(!marks.length)return;if(cur>=0&&marks[cur])marks[cur].classList.remove('cur');cur=(k+marks.length)%marks.length;const m=marks[cur];m.classList.add('cur');reveal(m);m.scrollIntoView({block:'center'});
+ $('#hitpos').textContent=(cur+1)+' / '+marks.length+(marks.length>3000?'+':'')+' · “'+lastQ+'”';}
+function openHit(i){const r=hits[i];if(!r)return;saveRecent(lastQ);resScroll=window.scrollY;
+ history.pushState(null,'','#'+r.sec);show(r.sec);reveal(r.el);markSection(r.sec,terms(lastQ));
+ $('#hitbar').hidden=false;let k=marks.findIndex(m=>r.el.contains(m));
+ if(k<0)k=marks.findIndex(m=>r.el.compareDocumentPosition(m)&Node.DOCUMENT_POSITION_FOLLOWING);
+ if(marks.length)setCur(Math.max(k,0));else{$('#hitpos').textContent='“'+lastQ+'”';r.el.scrollIntoView({block:'center'});}
+ flash(r.el);}
+function stepHit(d){setCur(cur+d);}
+function closeHits(){clearMarks();}
+function backToResults(){location.hash='q='+encodeURIComponent(lastQ);}
+// 최근 검색어(이 브라우저에만 저장)
+let RECENT=[];try{RECENT=JSON.parse(localStorage.getItem('ws-recent'))||[]}catch(e){}
+function saveRecent(q){q=q.trim();if(!q)return;RECENT=[q,...RECENT.filter(x=>x!==q)].slice(0,10);try{localStorage.setItem('ws-recent',JSON.stringify(RECENT))}catch(e){}}
+function dropRecent(q){RECENT=q==null?[]:RECENT.filter(x=>x!==q);try{localStorage.setItem('ws-recent',JSON.stringify(RECENT))}catch(e){}}
+function recentHtml(){return '<div class="rc-head"><span>최근 검색어</span><button class="linkbtn" data-rclear>전체 삭제</button></div><div class="chips">'+
+ RECENT.map(q=>'<span class="chip"><button data-rq="'+esc(q)+'">'+esc(q)+'</button><button class="x" data-rdel="'+esc(q)+'" aria-label="'+esc(q)+' 삭제">×</button></span>').join('')+'</div>';}
+function showRecent(){const p=$('#recent');if(!RECENT.length){p.hidden=true;return;}p.innerHTML=recentHtml();p.hidden=false;}
+function hideRecent(){$('#recent').hidden=true;}
+document.addEventListener('click',e=>{const t=e.target;
+ if(t.closest('[data-rq]')){const q=t.closest('[data-rq]').dataset.rq;sq.value=q;saveRecent(q);runSearch(q);return;}
+ if(t.closest('[data-rdel]')){e.stopPropagation();dropRecent(t.closest('[data-rdel]').dataset.rdel);refreshRecent();return;}
+ if(t.closest('[data-rclear]')){dropRecent(null);refreshRecent();return;}
+ if(!t.closest('.sbox'))hideRecent();});
+function refreshRecent(){if(!$('#recent').hidden)showRecent();if(curSec==='search'&&!lastQ)renderResults();}
+let tmr;
+sq.addEventListener('input',()=>{clearTimeout(tmr);if(!sq.value.trim())showRecent();else hideRecent();tmr=setTimeout(()=>runSearch(sq.value),140);});
+sq.addEventListener('focus',()=>{if(!sq.value.trim())showRecent();});
+sq.addEventListener('keydown',e=>{
+ if(e.key==='Enter'){e.preventDefault();clearTimeout(tmr);saveRecent(sq.value);runSearch(sq.value);}
+ else if(e.key==='Escape'){if(sq.value){sq.value='';clearTimeout(tmr);showRecent();}else{hideRecent();sq.blur();}}
+ else if(e.key==='ArrowDown'&&curSec==='search'){const f=$('#sres a.sr');if(f){e.preventDefault();hideRecent();f.focus();}}});
+document.addEventListener('keydown',e=>{const typing=/^(INPUT|TEXTAREA|SELECT)$/.test(e.target.tagName)||e.target.isContentEditable;
+ if((e.key==='/'&&!typing)||((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='k')){e.preventDefault();sq.focus();sq.select();}});
+// 라우팅: #문서ID · #q=검색어 · #search
+function route(){let h=location.hash.slice(1);try{h=decodeURIComponent(h)}catch(e){}
+ if(h.startsWith('q=')||h==='search'){const q=h==='search'?'':h.slice(2).trim();const back=q===lastQ&&q!=='';
+  sq.value=q;hideRecent();setQuery(q);show('search',back);renderResults();if(back)window.scrollTo(0,resScroll);return;}
+ show(h&&h!=='search'&&document.getElementById(h)?h:'home');}
+window.addEventListener('hashchange',route);
 (function(){try{const t=localStorage.getItem('ws-theme');if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}
- document.querySelectorAll('.qa-filter').forEach(qaFilter);
- const h=location.hash.slice(1);show(document.getElementById(h)?h:'home');})();
-window.addEventListener('hashchange',()=>{const h=location.hash.slice(1);if(document.getElementById(h))show(h);});
+ document.querySelectorAll('.qa-filter').forEach(qaFilter);route();})();
 </script>
 </body></html>
