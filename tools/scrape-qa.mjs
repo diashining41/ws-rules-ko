@@ -11,8 +11,17 @@ const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const API = "https://ws-tcg.com/manage/faq/searchJson";
 const OUT = path.join(ROOT, "sources", "qa.ja.json");
 
+// 2026-10 이후 API는 공식 Q&A 페이지(jQuery $.getJSON)와 같은 요청 헤더가 없으면 404를 돌려준다.
+const HEADERS = {
+  "User-Agent": "Mozilla/5.0",
+  "Accept": "application/json, text/javascript, */*; q=0.01",
+  "X-Requested-With": "XMLHttpRequest",
+  "Referer": "https://ws-tcg.com/question/",
+};
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 const get = async (page) => {
-  const r = await fetch(`${API}?page=${page}`, { headers: { "User-Agent": "Mozilla/5.0", "Accept": "application/json" } });
+  if (page > 1) await sleep(500);
+  const r = await fetch(`${API}?page=${page}`, { headers: HEADERS });
   if (!r.ok) throw new Error(`page ${page}: ${r.status}`);
   return r.json();
 };
